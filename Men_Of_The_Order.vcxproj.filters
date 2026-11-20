@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\C_Engine - Draw">
+      <UniqueIdentifier>{d5c49f51-9ada-46df-8576-0ba48ef670d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\C_Engine - Update">
+      <UniqueIdentifier>{9635e8e2-9488-4757-88ce-9b1eac8867ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\C_Engine - Input">
+      <UniqueIdentifier>{fd25257d-f34a-4822-9ac0-408ba25d3770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\C_Engine">
+      <UniqueIdentifier>{1197d3f3-32c5-416e-98e7-9f77d9149168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Units, Doodads, Projectiles">
+      <UniqueIdentifier>{b9d730a8-b52f-4acb-978e-a39049167246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enums">
+      <UniqueIdentifier>{b9149e6c-179a-4aaa-b11d-9c2c09012829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine level">
+      <UniqueIdentifier>{5c0d52c3-d760-46e8-9111-6bf209382564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pathing &amp; Geometry">
+      <UniqueIdentifier>{b959b9e9-1dcc-421c-9c1e-a300e5019af3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Units">
+      <UniqueIdentifier>{fd872e6b-2271-4901-b7d1-ae2594915e5b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="draw.cpp">
+      <Filter>Source Files\C_Engine - Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="update.cpp">
+      <Filter>Source Files\C_Engine - Update</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Source Files\C_Engine - Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Pythagoras.cpp">
+      <Filter>Source Files\Pathing &amp; Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="C_Engine.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomIntFromZeroTo.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="save.cpp">
+      <Filter>Source Files\C_Engine - Input</Filter>
+    </ClCompile>
+    <ClCompile Include="drawGameWorld.cpp">
+      <Filter>Source Files\C_Engine - Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="drawGUI.cpp">
+      <Filter>Source Files\C_Engine - Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="generate.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Atlas.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="knight.cpp">
+      <Filter>Source Files\Units, Doodads, Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>Source Files\Units, Doodads, Projectiles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C_Engine.hpp">
+      <Filter>Header Files\Engine level</Filter>
+    </ClInclude>
+    <ClInclude Include="WASDDirection.hpp">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Atlas.hpp">
+      <Filter>Header Files\Engine level</Filter>
+    </ClInclude>
+    <ClInclude Include="Knight.hpp">
+      <Filter>Header Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.hpp">
+      <Filter>Header Files\Engine level</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundOrigin.hpp">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundReason.hpp">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Unit.hpp">
+      <Filter>Header Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Goblin.hpp">
+      <Filter>Header Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderType.hpp">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Engine.hpp">
+      <Filter>Header Files\Engine level</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sfml-network-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-network-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-system-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-system-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-window-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-window-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="openal32.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-audio-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-audio-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-graphics-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sfml-graphics-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
