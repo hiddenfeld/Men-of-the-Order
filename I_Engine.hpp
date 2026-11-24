@@ -1,8 +1,10 @@
 #pragma once
+#include <vector>
 
 struct I_Unit;
+struct Goblin;
 
 struct I_Engine {
-	virtual I_Unit* getGoblin() = 0;
+	virtual std::vector<Goblin*>* getGoblins() = 0;
 	virtual I_Unit* getKnight() = 0;
 };

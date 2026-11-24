@@ -1,5 +1,94 @@
 #include "Goblin.hpp"
 
+Goblin::Goblin(
+	const int& _spawnPosition,
+	const int& _patrolRange)
+	:	I_Unit(
+			_spawnPosition,
+			300,
+			false,
+			6,
+			6,
+			OrderType::Patrol,
+			90,
+			900,
+			NULL,
+			0.8f,
+			2.7f,
+			2),
+		spawnPosition(_spawnPosition)
+{
+	patrolPosition1 = _spawnPosition - _patrolRange;
+	patrolPosition2 = _spawnPosition + _patrolRange;
+	patrolingToPoint1 = false;
+	swingCountdown = 0.0f;
+	strikeRecoveryCountdown = 0.0f;
+};
+
+Goblin::Goblin(
+	const int& _spawnPosition,
+	const int& _patrolPosition1,
+	const int& _patrolPosition2)
+	:	I_Unit(
+			_spawnPosition,
+			300,
+			false,
+			6,
+			6,
+			OrderType::Patrol,
+			90,
+			900,
+			NULL,
+			0.8f,
+			2.7f,
+			2),
+		spawnPosition(_spawnPosition),
+		patrolPosition1(_patrolPosition1),
+		patrolPosition2(_patrolPosition2)
+{
+	patrolingToPoint1 = false;
+	swingCountdown = 0.0f;
+	strikeRecoveryCountdown = 0.0f;
+};
+
+Goblin::Goblin(
+	const int& _position,
+	const int& _spawnPosition,
+	const int& _patrolPosition1,
+	const int& _patrolPosition2,
+	const int& _movementSpeed,
+	const bool& _facingRight,
+	const int& _hp,
+	const int& _maxHp,
+	const OrderType& _activeOrder,
+	const int& _attackRange,
+	const int& _aggroRange,
+	I_Unit* _attackTarget,
+	const float& _swingSpeed,
+	const float& _strikeRecoverySpeed,
+	const int& _attackDamage)
+	:	I_Unit(
+			_position,
+			_movementSpeed,
+			_facingRight,
+			_hp,
+			_maxHp,
+			_activeOrder,
+			_attackRange,
+			_aggroRange,
+			_attackTarget,
+			_swingSpeed,
+			_strikeRecoverySpeed,
+			_attackDamage),
+		spawnPosition(_spawnPosition),
+		patrolPosition1(_patrolPosition1),
+		patrolPosition2(_patrolPosition2)
+{
+	patrolingToPoint1 = false;
+	swingCountdown = 0.0f;
+	strikeRecoveryCountdown = 0.0f;
+};
+
 void Goblin::update(I_Engine* _engine, const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
 	strikeRecoveryCountdown -= _seconds;
 	if (strikeRecoveryCountdown < 0.0f)

@@ -40,6 +40,9 @@
     <Filter Include="Header Files\Units">
       <UniqueIdentifier>{fd872e6b-2271-4901-b7d1-ae2594915e5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Concept">
+      <UniqueIdentifier>{2d8a984f-36dc-48b8-a111-2de23abbbe06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -85,6 +88,9 @@
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
     <ClCompile Include="Goblin.cpp">
+      <Filter>Source Files\Units, Doodads, Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="I_Unit.cpp">
       <Filter>Source Files\Units, Doodads, Projectiles</Filter>
     </ClCompile>
   </ItemGroup>
@@ -157,5 +163,10 @@
     <None Include="sfml-graphics-d-2.dll">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Concept.txt">
+      <Filter>Resource Files\Concept</Filter>
+    </Text>
   </ItemGroup>
 </Project>

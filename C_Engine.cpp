@@ -22,39 +22,16 @@ C_Engine::C_Engine() {
     generateForestLevel();
 
     playerPosition = 0;
-    knight.position = 0;
-    knight.movementSpeed = 300;
-    knight.facingRight = false;
-    knight.hp    =  8;
-    knight.maxHp = 10;
-    knight.currentBlockCooldown = 0.0f;
-    knight.blockCooldown = 2.0f;
-    knight.learnedBlock = true;
-    knight.attackRange = 110;
-    knight.aggroRange = 600;
-    knight.attackTarget = NULL;
-    knight.swingCountdown = 0.0f;
-    knight.swingSpeed = 1.0f;
-    knight.strikeRecoveryCountdown = 1.0f;
-    knight.strikeRecoverySpeed = 2.0f;
-    knight.attackDamage = 2;
-    goblin.position = -1600;
-    goblin.spawnPosition = -1600;
-    goblin.patrolPosition1 = -800;
-    goblin.patrolPosition2 = -2400;
-    goblin.movementSpeed = 300;
-    goblin.facingRight = false;
-    goblin.hp    = 6;
-    goblin.maxHp = 6;
-    goblin.activeOrder = OrderType::Patrol;
-    goblin.attackRange = 90;
-    goblin.aggroRange = 900;
-    goblin.attackTarget = NULL;
-    goblin.swingCountdown = 0.0f;
-    goblin.swingSpeed = 0.8f;
-    goblin.strikeRecoveryCountdown = 0.0f;
-    goblin.strikeRecoverySpeed = 2.7f;
-    goblin.attackDamage = 1;
+    knight = new Knight(0, 300, false, 8, 10, OrderType::None, 110, 600, NULL, 1.0f, 2.0f, 2, true, 2.0f);
+    {   Goblin* goblin{new Goblin(-2000, 800)};
+        goblins.push_back(goblin);
+    } { Goblin* goblin{new Goblin(-3400, 750)};
+        goblins.push_back(goblin);
+    } { Goblin* goblin{new Goblin( 2000, 800)};
+        goblins.push_back(goblin);
+    } { Goblin* goblin{new Goblin( 2500, 600)};
+        goblins.push_back(goblin);
+    }
     dirtRoadInTheWoodsSpritesheet.loadFromFile("spritesheets/dirtRoadInTheWoods.jpg");
     dirtRoadInTheWoodsSprite.setTexture(dirtRoadInTheWoodsSpritesheet);
     goblinSpritesheet.loadFromFile("spritesheets/goblin.png");
@@ -84,10 +61,10 @@ void C_Engine::start() {
     }
 };
 
-I_Unit* C_Engine::getGoblin() {
-    return &goblin;
+std::vector<Goblin*>* C_Engine::getGoblins() {
+    return &goblins;
 };
 
 I_Unit* C_Engine::getKnight() {
-    return &knight;
+    return knight;
 };
