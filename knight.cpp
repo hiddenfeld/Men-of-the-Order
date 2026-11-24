@@ -36,19 +36,59 @@ Knight::Knight(
 };
 
 void Knight::update(I_Engine* _engine, const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
+	countDownCountdowns(_seconds);
 	if (hp > 0) {
-		if (position != _designatedPosition)
-			move(_seconds, _designatedPosition, _playerFacingRight);
-		if (currentBlockCooldown > 0.0f) {
-			currentBlockCooldown -= _seconds;
-			if (currentBlockCooldown < 0.0f)
-				currentBlockCooldown = 0.0f;
-		}
+		switch (activeOrder) {
+			case OrderType::ProtectFront:
+				if (position != _designatedPosition)
+					move(_seconds, _designatedPosition, _playerFacingRight);
+				checkAggro(_engine);
+				break;
+			case OrderType::Swing:
+				checkSwing(_seconds);
+				break;
+			case OrderType::Patrol:
+			case OrderType::Charge:
+			default:
+				std::cout << "ERROR in Knight.cpp on Line #" << __LINE__ << ". Unknown orderType!" << std::endl;
+				break;
+		}	
+	}
+};
+
+void Knight::countDownCountdowns(const float& _seconds) {
+	if (currentBlockCooldown > 0.0f) {
+		currentBlockCooldown -= _seconds;
+		if (currentBlockCooldown < 0.0f)
+			currentBlockCooldown = 0.0f;
+	}
+	if (swingCountdown > 0.0f) {
+		swingCountdown -= _seconds;
+		if (swingCountdown < 0.0f)
+			swingCountdown = 0.0f;
+	}
+	if (strikeRecoveryCountdown > 0.0f) {
+		strikeRecoveryCountdown -= _seconds;
+		if (strikeRecoveryCountdown < 0.0f)
+			strikeRecoveryCountdown = 0.0f;
 	}
 };
 
 void Knight::checkAggro(I_Engine* _engine) {
-
+	for (std::vector<Goblin*>::iterator it{_engine->getGoblins()->begin()}; it != _engine->getGoblins()->end(); it++) {
+		I_Unit* goblin{*it};
+		if (goblin->hp > 0) {
+			int distanceBetweenThisAndTarget{std::abs(position - goblin->position)};
+			if (distanceBetweenThisAndTarget <= attackRange + goblin->attackRange) {
+				if (strikeRecoveryCountdown <= 0.0f) {
+					// initiate melee attack
+					activeOrder = OrderType::Swing;
+					attackTarget = goblin;
+					swingCountdown = swingSpeed;
+				}
+			}
+		}
+	}
 };
 
 void Knight::checkCharge(I_Engine* _engine, const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
@@ -56,7 +96,12 @@ void Knight::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 };
 
 void Knight::checkSwing(const float& _seconds) {
-
+	if (swingCountdown <= 0.0f) {
+		activeOrder = OrderType::ProtectFront;
+		attackTarget->getHurt(attackDamage);
+		strikeRecoveryCountdown = strikeRecoverySpeed;
+		attackTarget = NULL;
+	}
 };
 
 void Knight::move(const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
@@ -81,18 +126,18 @@ void Knight::move(const float& _seconds, const int& _designatedPosition, const b
 };
 
 void Knight::getHurt(const int& _amount) {
-	bool attackBlocked{false};
-	if (learnedBlock)
-		if (currentBlockCooldown <= 0.0f) {
-			SoundManager::playSound({SoundOrigin::Knight, SoundReason::Block}, 50.0f);
-			attackBlocked = true;
-			currentBlockCooldown = blockSpeed;
-		}
-	if (!attackBlocked) {
-		if (hp > 0) {
+	if (hp > 0) {
+		bool attackBlocked{false};
+		if (learnedBlock)
+			if (currentBlockCooldown <= 0.0f) {
+				SoundManager::playSound({SoundOrigin::Knight, SoundReason::Block}, 50.0f);
+				attackBlocked = true;
+				currentBlockCooldown = blockSpeed;
+			}
+		if (!attackBlocked) {
 			hp -= _amount;
+			SoundManager::playSound({SoundOrigin::Knight, SoundReason::Hurt}, 50.0f);
 		}
-		SoundManager::playSound({SoundOrigin::Knight, SoundReason::Hurt}, 50.0f);
 	}
 };
 
