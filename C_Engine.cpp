@@ -22,7 +22,7 @@ C_Engine::C_Engine() {
     generateForestLevel();
 
     playerPosition = 0;
-    knight = new Knight(0, 300, false, 8, 10, OrderType::None, 110, 600, NULL, 1.0f, 2.0f, 2, true, 2.0f);
+    knight = new Knight(0, 300, false, 8, 10, OrderType::ProtectFront, 110, 600, NULL, 1.0f, 2.0f, 2, true, 2.0f);
     {   Goblin* goblin{new Goblin(-2000, 800)};
         goblins.push_back(goblin);
     } { Goblin* goblin{new Goblin(-3400, 750)};

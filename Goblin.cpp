@@ -90,24 +90,37 @@ Goblin::Goblin(
 };
 
 void Goblin::update(I_Engine* _engine, const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
-	strikeRecoveryCountdown -= _seconds;
-	if (strikeRecoveryCountdown < 0.0f)
-		strikeRecoveryCountdown = 0.0f;
-	switch (activeOrder) {
-		case OrderType::Patrol:
-			move(_seconds, _designatedPosition, _playerFacingRight);
-			checkAggro(_engine);
-			break;
-		case OrderType::Charge:
-			checkCharge(_engine, _seconds, _designatedPosition, _playerFacingRight);
-			break;
-		case OrderType::Swing:
-			checkSwing(_seconds);
-			break;
-		default:
-			std::cout << "ERROR in Goblin.cpp on Line #" << __LINE__ << ". Unknown orderType!" << std::endl;
-			break;
-	}	
+	countDownCountdowns(_seconds);
+	if (hp > 0) {
+		switch (activeOrder) {
+			case OrderType::Patrol:
+				move(_seconds, _designatedPosition, _playerFacingRight);
+				checkAggro(_engine);
+				break;
+			case OrderType::Charge:
+				checkCharge(_engine, _seconds, _designatedPosition, _playerFacingRight);
+				break;
+			case OrderType::Swing:
+				checkSwing(_seconds);
+				break;
+			default:
+				std::cout << "ERROR in Goblin.cpp on Line #" << __LINE__ << ". Unknown orderType!" << std::endl;
+				break;
+		}
+	}
+};
+
+void Goblin::countDownCountdowns(const float& _seconds) {
+	if (strikeRecoveryCountdown > 0.0f) {
+		strikeRecoveryCountdown -= _seconds;
+		if (strikeRecoveryCountdown < 0.0f)
+			strikeRecoveryCountdown = 0.0f;
+	}
+	if (swingCountdown > 0.0f) {
+		swingCountdown -= _seconds;
+		if (swingCountdown < 0.0f)
+			swingCountdown = 0.0f;
+	}
 };
 
 void Goblin::checkAggro(I_Engine* _engine) {
@@ -137,10 +150,7 @@ void Goblin::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 };
 
 void Goblin::checkSwing(const float& _seconds) {
-	swingCountdown -= _seconds;
-	if (swingCountdown < 0.0f)
-		swingCountdown = 0.0f;
-	if (swingCountdown == 0.0f) {
+	if (swingCountdown <= 0.0f) {
 		attackTarget->getHurt(attackDamage);
 		strikeRecoveryCountdown = strikeRecoverySpeed;
 		if (attackTarget->hp == 0) {
@@ -157,7 +167,7 @@ void Goblin::move(const float& _seconds, const int& _designatedPosition, const b
 	if (distanceTraveled == 0)
 		distanceTraveled++;
 	// determine destination
-	int designatedPosition;
+	int designatedPosition{0};
 	switch (activeOrder) {
 		case OrderType::Patrol:
 			if (patrolingToPoint1)
@@ -193,6 +203,10 @@ void Goblin::move(const float& _seconds, const int& _designatedPosition, const b
 void Goblin::getHurt(const int& _amount) {
 	if (hp > 0) {
 		hp -= _amount;
+		if (hp < 0)
+			hp = 0;
+		if (hp == 0)
+			activeOrder = OrderType::None;
 	}
 	//SoundManager::playSound({SoundOrigin::Goblin, SoundReason::Hurt}, 50.0f);
 };

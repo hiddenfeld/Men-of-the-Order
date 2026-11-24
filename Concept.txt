@@ -3,8 +3,8 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	Logs and bushes
-
+	Knight swings weapon at goblins, stops walking during his weapon swing, can hurt goblins, goblins can die
+	knight gets graphics that indicate difference between walking and swinging
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 

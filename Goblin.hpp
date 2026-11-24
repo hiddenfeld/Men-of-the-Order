@@ -16,6 +16,7 @@ struct Goblin : public I_Unit {
 	Goblin(const int&, const int&, const int&, const int&, const int&, const bool&, const int&, const int&, const OrderType&, const int&, const int&, I_Unit*, const float&, const float&, const int&);
 
 	void update(I_Engine*, const float&, const int&, const bool&);
+	void countDownCountdowns(const float&);
 	void move(const float&, const int&, const bool&);
 	void checkAggro(I_Engine*);
 	void checkCharge(I_Engine*, const float&, const int&, const bool&);

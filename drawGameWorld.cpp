@@ -70,6 +70,10 @@ void C_Engine::drawGoblin(Goblin* _goblin) {
         case OrderType::Swing:
             xOffset = 320;
             break;
+        case OrderType::None:
+            if (_goblin->hp == 0)
+                xOffset = 480;
+            break;
         default:
             std::cout << "ERROR in C_Engine.cpp::drawGoblin() on Line #" << __LINE__ << ". Unknown orderType!" << std::endl;
             break;
@@ -79,18 +83,23 @@ void C_Engine::drawGoblin(Goblin* _goblin) {
     else
         goblinSprite.setTextureRect({xOffset, 220, Atlas::spriteBounds.at(SpriteName::Goblin).width, Atlas::spriteBounds.at(SpriteName::Goblin).height});
     goblinSprite.setPosition((float)(_goblin->position - 80), 360.0f);
-    goblinSprite.setColor({(sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 1.25f)),
-                           (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 2.50f)),
-                           (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 2.50f)),
-                                       255});
+    if (   _goblin->hp > 0
+        && _goblin->hp < _goblin->maxHp)
+        goblinSprite.setColor({(sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 0.5f)),
+                               (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 1.0f)),
+                               (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 1.0f)),
+                                           255});
     window.draw(goblinSprite);
 };
 
 void C_Engine::drawKnight() {
+    int yOffset{0};
+    if (knight->activeOrder == OrderType::Swing)
+        yOffset = 295;
     if (knight->facingRight)
-        knightSprite.setTextureRect({Atlas::spriteBounds.at(SpriteName::Knight).width, 0, Atlas::spriteBounds.at(SpriteName::Knight).width, Atlas::spriteBounds.at(SpriteName::Knight).height});
+        knightSprite.setTextureRect({Atlas::spriteBounds.at(SpriteName::Knight).width, yOffset, Atlas::spriteBounds.at(SpriteName::Knight).width, Atlas::spriteBounds.at(SpriteName::Knight).height});
     else
-        knightSprite.setTextureRect({                                               0, 0, Atlas::spriteBounds.at(SpriteName::Knight).width, Atlas::spriteBounds.at(SpriteName::Knight).height});
+        knightSprite.setTextureRect({                                               0, yOffset, Atlas::spriteBounds.at(SpriteName::Knight).width, Atlas::spriteBounds.at(SpriteName::Knight).height});
     knightSprite.setPosition((float)(knight->position - 130), 300.0f);
     knightSprite.setColor({(sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(knight->hp, knight->maxHp) * 1.25f)),
                            (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(knight->hp, knight->maxHp) * 2.50f)),
