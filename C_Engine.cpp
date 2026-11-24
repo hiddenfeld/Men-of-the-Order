@@ -15,12 +15,19 @@ C_Engine::C_Engine() {
     window.setMouseCursorVisible(false);
     xRenderBoundary = 750;
 
-    Atlas::load();
+    arialFont.loadFromFile("arial.ttf");
+    debugText.setFont(arialFont);
+    helpText.setFont(arialFont);
 
-    playerFacingRight = false;
+    Atlas::load();
+    altModeActive = false;
+    debugModeEnabled = false;
+    f2Enabled = true;
+    
     clearLevel();
     generateForestLevel();
 
+    playerFacingRight = false;
     playerPosition = 0;
     knight = new Knight(0, 300, false, 8, 10, OrderType::ProtectFront, 110, 600, NULL, 1.0f, 2.0f, 2, true, 2.0f);
     {   Goblin* goblin{new Goblin(-2000, 800)};
@@ -38,7 +45,7 @@ C_Engine::C_Engine() {
     goblinSprite.setTexture(goblinSpritesheet);
     knightSpritesheet.loadFromFile("spritesheets/knight.png");
     knightSprite.setTexture(knightSpritesheet);
-    cursorSpritesheet.loadFromFile("cursor.png");
+    cursorSpritesheet.loadFromFile("spritesheets/cursor.png");
     cursorSprite.setTexture(cursorSpritesheet);
     bushSpritesheet.loadFromFile("spritesheets/bush.png");
     bushSprite.setTexture(bushSpritesheet);
@@ -56,9 +63,9 @@ void C_Engine::start() {
     resetViewsAndRenderBounds();
     while (window.isOpen()) {
         Time dt{clock.restart()};
-
         float elapsedSeconds{dt.asSeconds()};
-
+        relativeMousePosition = {(int)(Mouse::getPosition().x - window.getPosition().x -  8 - (gameWorldView.getSize().x / 2) + gameWorldView.getCenter().x),
+                                 (int)(Mouse::getPosition().y - window.getPosition().y - 30 - (gameWorldView.getSize().y / 2) + gameWorldView.getCenter().y)};
         input();
         update(elapsedSeconds);
         draw();

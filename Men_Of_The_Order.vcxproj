@@ -138,6 +138,7 @@
     <ClCompile Include="draw.cpp" />
     <ClCompile Include="drawGameWorld.cpp" />
     <ClCompile Include="drawGUI.cpp" />
+    <ClCompile Include="EnumsToStringUtility.cpp" />
     <ClCompile Include="generate.cpp" />
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="input.cpp" />
