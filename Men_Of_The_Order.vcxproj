@@ -141,6 +141,7 @@
     <ClCompile Include="generate.cpp" />
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="I_Unit.cpp" />
     <ClCompile Include="knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pythagoras.cpp" />
@@ -174,6 +175,9 @@
     <None Include="sfml-system-d-2.dll" />
     <None Include="sfml-window-2.dll" />
     <None Include="sfml-window-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Concept.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

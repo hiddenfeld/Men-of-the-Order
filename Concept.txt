@@ -1,0 +1,116 @@
+#pragma once
+
+/*
+
+	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
+
+	The game is able to have multiple goblins
+
+	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
+
+
+
+	TO BE CONSIDERED FOR IMPLEMENTATION: -----------------------------------------------------------------------------------------------------
+
+	The player has a pack mule following him around
+	-> The player can open his inventory by pressing a hot key or by clicking on the pack mule
+
+	The player can hire recruits.
+	-> Recruits are hired for gold dropped by goblins.
+	-> If all recruits die and the player has run out of gold the game is over.
+	-> died recruits can be revived or retrieved in rescue missions
+	-> rescue missions replace a random resource with the fallen recruit
+	-> rescue missions are chosen in the mission selection menu
+	-> mission selection menu allows the player to chose a rescue mission, a regular harvesting mission or a boss run mission
+	--> regular harvesting missions have resources (logs for chopping wood, ore deposits for mining ores, herb bushes for herbs)
+	--> rescue missions have one resource replaced with a slain recruit of the player's
+	--> boss run missions are milestone missions where the player unlocks new features, skills or zones by defeating a certain boss
+
+	Recruits can be told to do various tasks.
+	-> when they do a task, they improve at doing that task.
+	-> first they do miserably, then they improve.
+	-> first they improve quickly, then they improve slowly.
+	-> Chance of success = 0%
+	-> Chance of improving chance of success = (100% - Chance of success)²
+	--> Example:  0% chance of success 100% chance of improving when attempting because (100% -  0%) * (100% -  0%) = 1   * 1   = 1    = 100%
+	--> Example: 10% chance of success  81% chance of improving when attempting because (100% - 10%) * (100% - 10%) = 0.9 * 0.9 = 0.81 =  81%
+	--> Example: 90% chance of success   1% chance of improving when attempting because (100% - 90%) * (100% - 90%) = 0.1 * 0.1 = 0.01 =   1%
+	-> Tasks that are attempted, failed or succeeded and improved in this manner:
+	--> Swinging weapon at an enemy
+	---> If successful -> damange attack target and decrease durability of recruit's weapon
+	---> else		   -> do not damage attack target, do not decrease durability of recruit's weapon
+	--> Blocking enemy attack with shield
+	---> If successful -> reduce attacker's damage to recruit, decrease durability of recruit's shield
+	---> else          -> do not reduce attacker's damage to recruit, do not decrease durability of recruit's shield
+	--> Constructing buildings or dismantling buildings
+	---> If successful -> progress on building the building is made
+	---> else          -> nothing happens
+	--> Brewing potions
+	---> If successful -> progress on brewing the potion is made
+	---> else		   -> nothing happens
+	-> when recruits do a task, their skill level determines the quantity of that tasks result
+	--> Examples of tasks where quanitity matters
+	---> Harvesting wood, herbs, ore, rocks
+	----> A newby will render most of the harvest destroyed, whereas an experienced harvester will get a lot out of a harvest
+	----> If a recruit harvests, the harvested amount will be calculated
+	-----> he'll destroy 100 of the resource in the resource pocket, but he will receive only his skill level of that amount
+	-----> Example: Skill of harvesting wood 
+	------> Starts out at 0 chance of improving 100%
+	------> Maxes out at 100
+	------> Calculation like with the chance of success at the other tasks
+	---> Crafting equipment
+	----> If the recruit is successful at making progress while crafting a equipment durability is added.
+	----> A newby will build a wooden buckler and it will have little durability when he is finished.
+	----> An experienced wood crafter will craft a buckler and it will have a lot of durability when he is done.
+	-> If the game ever gains difficulty levels, the initial skill level of new recruits could be below 0% in the beginning at a hard difficulty or it could be already 50% on an easy difficulty
+
+	When recruits harvest resources, they fall on the ground nearby as chunks of resources
+	-> all recruits, the player and his pack mule can pick them up.
+	--> no matter who picks them up, the items always end up in the same inventory: The player's/ party's inventory in the bags of the pack mule
+	
+	Recruits need a tool for harvesting as they need weapons for fighting
+	-> Changing equipment during a mission should be restricted or come at a cost to make the player leave base with a designated fighter, healer, mage, witch, harvester for wood, harvester for herbs, harvester for ores etc.
+
+	There could be witches that fly in the air and attempt to block flying magic attacks
+	-> If they succeed the magic thing is blocked
+	-> If they don't the magic thing hits the witch or continues to fly towards the other recruits
+
+	There could be a fire mage that shoots homing fireballs in an arch over the knight's heads to hurt enemy rangers that backpaddle away from the knights and kite them
+	-> knights should not chase those enemies, since they can't reach them anyway, forcing the player to heal a lot
+	-> There could be fast ranger enemies and slow ranger enemies, after the fast ranger is introduced, the fire mage is introduced as a counter (rock, paper, sissors principle)
+
+	Recruits that fight in melee (knights)
+	-> wear armor made from harvested wood and metal
+	-> drink potions, eat food and are healed by the player
+	-> fight enemies in melee combat
+	-> weild swords, clubs and shields made from wood and metals
+	-> a wooden buckler has a higher block cooldown and can only block some damage
+	-> a metal buckler has a smaller block cooldown and can block more damage
+	-> maybe there is a spear item, kinda turning the knight into a spartan hoplite, increasing his attack range
+
+	There should be a camp site / home base
+	-> that has workbenches
+	--> where the player can instruct recruits to
+	---> craft wooden equipment
+	---> smelt ores
+	---> craft metal equipment
+	---> brew potions
+	---> craft ammunition
+	---> craft magical supplies for witches, fire mages and the player
+
+	First zone: Forest
+	-> Enemies:
+	--> Goblins
+	-> Resources:
+	--> Herbs for healing food or potions for the knight/fighter
+	--> Logs which can be chopped to wood for simple buildings and equipment
+	---> wood crafting workbench
+	----> wooden buckler
+	-----> chance to reduce damage by 2
+	----> wooden club
+	-----> deals 1 damage
+	----> wooden armor
+	-----> reduce received damage by 1
+	---> wooden barricade
+
+*/

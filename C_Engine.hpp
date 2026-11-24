@@ -49,20 +49,22 @@ class C_Engine : public I_Engine {
     int playerPosition;
     int designatedKnightPosition;
 
-    Goblin goblin;
-    Knight knight;
+    std::vector<Goblin*> goblins;
+    Knight* knight;
 
     void input();
     Vector2i mousePosRelativeToTopLeftCornerOfWindow;
 	Vector2i ascertainMousePosRelativeToTopLeftCornerOfWindow(const Vector2i&) const;
     void resetViewsAndRenderBounds();
-    void update( const float& );
+    void update(const float&);
+    void updateGoblins(const float&);
     void draw();
     void drawGUI();
     void drawGameWorld();
     void drawLevelBackground();
     void drawUnits();
-    void drawGoblin();
+    void drawGoblins();
+    void drawGoblin(Goblin*);
     void drawKnight();
     void drawSquire();
     void drawLevelForeground();
@@ -76,6 +78,6 @@ public:
 
     void start();
     void save();
-    I_Unit* getGoblin();
+    std::vector<Goblin*>* getGoblins();
     I_Unit* getKnight();
 };

@@ -19,6 +19,8 @@ struct I_Unit {
 	float strikeRecoverySpeed;
 	int attackDamage;
 
+	I_Unit(const int&, const int&, const bool&, const int&, const int&, const OrderType&, const int&, const int&, I_Unit*, const float&, const float&, const int&);
+
 	virtual void update(I_Engine*, const float&, const int&, const bool&) = 0;
 	virtual void move(const float&, const int&, const bool&) = 0;
 	virtual void checkAggro(I_Engine*) = 0;

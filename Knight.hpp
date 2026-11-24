@@ -8,7 +8,9 @@
 struct Knight : public I_Unit {
 	bool learnedBlock;
 	float currentBlockCooldown;
-	float blockCooldown;
+	float blockSpeed;
+
+	Knight(const int&, const int&, const bool&, const int&, const int&, const OrderType&, const int&, const int&, I_Unit*, const float&, const float&, const int&, const bool&, const float&);
 
 	void update(I_Engine*, const float&, const int&, const bool&);
 	void move(const float&, const int&, const bool&);
