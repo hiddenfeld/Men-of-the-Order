@@ -40,7 +40,8 @@ void Knight::update(I_Engine* _engine, const float& _seconds, const int& _design
 	if (hp > 0) {
 		switch (activeOrder) {
 			case OrderType::ProtectFront:
-				if (position != _designatedPosition)
+				if (   !checkCollision(_engine)
+					&& position != _designatedPosition)
 					move(_seconds, _designatedPosition, _playerFacingRight);
 				checkAggro(_engine);
 				break;
@@ -123,6 +124,18 @@ void Knight::move(const float& _seconds, const int& _designatedPosition, const b
 		facingRight = true;
 		position += distanceTraveled;
 	}
+};
+
+bool Knight::checkCollision(I_Engine* _engine) {
+	for (std::vector<Goblin*>::iterator it{_engine->getGoblins()->begin()}; it != _engine->getGoblins()->end(); it++) {
+		I_Unit* goblin{*it};
+		if (goblin->hp > 0) {
+			int distanceBetweenThisAndTarget{std::abs(position - goblin->position)};
+			if (distanceBetweenThisAndTarget <= attackRange + goblin->attackRange - 50)
+				return true;
+		}
+	}
+	return false;
 };
 
 void Knight::getHurt(const int& _amount) {

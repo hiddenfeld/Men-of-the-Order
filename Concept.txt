@@ -3,8 +3,8 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	Knight swings weapon at goblins, stops walking during his weapon swing, can hurt goblins, goblins can die
-	knight gets graphics that indicate difference between walking and swinging
+	Knight can collide with goblins
+	Knight can't move beyond a blocking goblin unless he defeated it
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 
