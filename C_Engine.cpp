@@ -40,6 +40,10 @@ C_Engine::C_Engine() {
     knightSprite.setTexture(knightSpritesheet);
     cursorSpritesheet.loadFromFile("cursor.png");
     cursorSprite.setTexture(cursorSpritesheet);
+    bushSpritesheet.loadFromFile("spritesheets/bush.png");
+    bushSprite.setTexture(bushSpritesheet);
+    logSpritesheet.loadFromFile("spritesheets/log.png");
+    logSprite.setTexture(logSpritesheet);
     treeSpritesheet.loadFromFile("spritesheets/tree.png");
     treeSprite.setTexture(treeSpritesheet);
     squireSpritesheet.loadFromFile("spritesheets/squire.png");

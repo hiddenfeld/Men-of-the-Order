@@ -3,15 +3,13 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
+	Logs and bushes
 
-	The game is able to have multiple goblins
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 
 
-
 	TO BE CONSIDERED FOR IMPLEMENTATION: -----------------------------------------------------------------------------------------------------
-
 	The player has a pack mule following him around
 	-> The player can open his inventory by pressing a hot key or by clicking on the pack mule
 

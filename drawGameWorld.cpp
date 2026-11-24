@@ -4,6 +4,7 @@ void C_Engine::drawGameWorld() {
     window.setView(gameWorldView);
     gameWorldView.setCenter((float)playerPosition, (float)400);
     drawLevelBackground();
+    drawInteractibleDoodads();
     drawUnits();
     window.setView(foregroundView);
     foregroundView.setCenter((float)(playerPosition * 2), (float)400);
@@ -23,6 +24,27 @@ void C_Engine::drawLevelBackground() {
             window.draw(treeSprite);
     }
 }
+
+void C_Engine::drawInteractibleDoodads() {
+    for (std::vector<InteractibleDoodad*>::iterator it{interactibleDoodads.begin()}; it != interactibleDoodads.end(); it++)
+        drawInteractibleDoodad(*it);
+};
+
+void C_Engine:: drawInteractibleDoodad(InteractibleDoodad* _id) {
+    switch (_id->interactibleDoodadType) {
+        case InteractibleDoodadType::Bush:
+            bushSprite.setPosition((float)(_id->position - Atlas::spriteBounds.at(SpriteName::Bush).width / 2), 280);
+            window.draw(bushSprite);
+            break;
+        case InteractibleDoodadType::Log:
+            logSprite.setPosition((float)(_id->position - Atlas::spriteBounds.at(SpriteName::Log).width / 2), 390);
+            window.draw(logSprite);
+            break;
+        default:
+            std::cout << "ERROR in C_Engine::drawGameWorld.cpp on line #" << __LINE__ << ". Unknown InteractibleDoodadType!" << std::endl;
+            break;
+    }
+};
 
 void C_Engine::drawUnits() {
     drawGoblins();

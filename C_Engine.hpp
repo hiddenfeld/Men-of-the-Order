@@ -17,6 +17,7 @@
 #include "I_Engine.hpp"
 #include "Atlas.hpp"
 #include "Goblin.hpp"
+#include "InteractibleDoodad.hpp"
 #include "Knight.hpp"
 #include "RandomIntFromZeroTo.cpp"
 #include "Pythagoras.cpp"
@@ -36,6 +37,10 @@ class C_Engine : public I_Engine {
     Sprite knightSprite;
     Texture cursorSpritesheet;
     Sprite cursorSprite;
+    Texture bushSpritesheet;
+    Sprite bushSprite;
+    Texture logSpritesheet;
+    Sprite logSprite;
     Texture treeSpritesheet;
     Sprite treeSprite;
     Texture squireSpritesheet;
@@ -44,6 +49,7 @@ class C_Engine : public I_Engine {
     int xRenderBoundary;
     std::vector<int> backgroundTreePositions;
     std::vector<int> foregroundTreePositions;
+    std::vector<InteractibleDoodad*> interactibleDoodads;
 
     bool playerFacingRight;
     int playerPosition;
@@ -59,15 +65,17 @@ class C_Engine : public I_Engine {
     void update(const float&);
     void updateGoblins(const float&);
     void draw();
-    void drawGUI();
     void drawGameWorld();
     void drawLevelBackground();
+    void drawInteractibleDoodads();
+    void drawInteractibleDoodad(InteractibleDoodad*);
     void drawUnits();
     void drawGoblins();
     void drawGoblin(Goblin*);
     void drawKnight();
     void drawSquire();
     void drawLevelForeground();
+    void drawGUI();
     int calculateMissingHealthPercentile(const int&, const int&);
 
     void clearLevel();
