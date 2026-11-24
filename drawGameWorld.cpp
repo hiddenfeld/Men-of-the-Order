@@ -89,6 +89,8 @@ void C_Engine::drawGoblin(Goblin* _goblin) {
                                (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 1.0f)),
                                (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(_goblin->hp, _goblin->maxHp) * 1.0f)),
                                            255});
+    else
+        goblinSprite.setColor(sf::Color::White);
     window.draw(goblinSprite);
 };
 
