@@ -92,6 +92,11 @@ void C_Engine::drawGoblin(Goblin* _goblin) {
     else
         goblinSprite.setColor(sf::Color::White);
     window.draw(goblinSprite);
+    if (debugModeEnabled) {
+        debugText.setString("(" + std::to_string(_goblin->position) + ")");
+        debugText.setPosition((float)(_goblin->position - 50), 600.0f);
+        window.draw(debugText);
+    }
 };
 
 void C_Engine::drawKnight() {
@@ -108,6 +113,11 @@ void C_Engine::drawKnight() {
                            (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(knight->hp, knight->maxHp) * 2.50f)),
                                        255});
     window.draw(knightSprite);
+    if (debugModeEnabled) {
+        debugText.setString("(" + std::to_string(knight->position) + ")");
+        debugText.setPosition((float)(knight->position - 50), 600.0f);
+        window.draw(debugText);
+    }
 }
 
 void C_Engine::drawSquire() {
@@ -117,6 +127,11 @@ void C_Engine::drawSquire() {
         squireSprite.setTextureRect({                                               0, 0, Atlas::spriteBounds.at(SpriteName::Squire).width, Atlas::spriteBounds.at(SpriteName::Squire).height});
     squireSprite.setPosition((float)(playerPosition - 130), 300.0f);
     window.draw(squireSprite);
+    if (debugModeEnabled) {
+        debugText.setString("(" + std::to_string(playerPosition) + ")");
+        debugText.setPosition((float)(playerPosition - 50), 600.0f);
+        window.draw(debugText);
+    }
 }
 
 void C_Engine::drawLevelForeground() {

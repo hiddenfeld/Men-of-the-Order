@@ -3,8 +3,9 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	Knight can collide with goblins
-	Knight can't move beyond a blocking goblin unless he defeated it
+	Unit info window added for knight, goblin and interactibleDoodads
+	Debug texts added
+	Altmode and Debugmode added, activated by pressing Alt and F2
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 

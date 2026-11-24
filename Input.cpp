@@ -18,6 +18,22 @@ void C_Engine::input() {
             playerFacingRight = false;
             playerPosition -= 15;
         }
+        if (Keyboard::isKeyPressed(Keyboard::LAlt)) {
+            altModeActive = true;
+        } else {
+            altModeActive = false;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::F2)) {
+            if (f2Enabled) {
+                if (debugModeEnabled)
+                    debugModeEnabled = false;
+                else
+                    debugModeEnabled = true;
+            }
+            f2Enabled = false;
+        } else {
+            f2Enabled = true;
+        }
     }
 	mousePosRelativeToTopLeftCornerOfWindow = ascertainMousePosRelativeToTopLeftCornerOfWindow(Mouse::getPosition());
 };
@@ -31,5 +47,5 @@ void C_Engine::resetViewsAndRenderBounds() {
     gameWorldView. reset(FloatRect( 0, 0, window.getSize().x, window.getSize().y));
     foregroundView.reset(FloatRect( 0, 0, window.getSize().x, window.getSize().y));
     guiView.       reset(FloatRect( 0, 0, window.getSize().x, window.getSize().y));
-    xRenderBoundary = gameWorldView.getSize().x / 2 + 750.0;
+    xRenderBoundary = (int)(gameWorldView.getSize().x / 2) + 750;
 };

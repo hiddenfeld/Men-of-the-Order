@@ -93,6 +93,12 @@
     <ClCompile Include="I_Unit.cpp">
       <Filter>Source Files\Units, Doodads, Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="InteractibleDoodad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumsToStringUtility.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C_Engine.hpp">
@@ -127,6 +133,15 @@
     </ClInclude>
     <ClInclude Include="I_Engine.hpp">
       <Filter>Header Files\Engine level</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractibleDoodad.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractibleDoodadType.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceType.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

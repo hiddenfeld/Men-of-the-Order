@@ -16,6 +16,7 @@
 #include <memory>
 #include "I_Engine.hpp"
 #include "Atlas.hpp"
+#include "EnumsToStringUtility.cpp"
 #include "Goblin.hpp"
 #include "InteractibleDoodad.hpp"
 #include "Knight.hpp"
@@ -58,6 +59,16 @@ class C_Engine : public I_Engine {
     std::vector<Goblin*> goblins;
     Knight* knight;
 
+    Font arialFont;
+    sf::Text debugText;
+    sf::Text helpText;
+    sf::RectangleShape rectangle;
+
+    bool debugModeEnabled;
+    bool f2Enabled;
+    bool altModeActive;
+
+    sf::Vector2i relativeMousePosition;
     void input();
     Vector2i mousePosRelativeToTopLeftCornerOfWindow;
 	Vector2i ascertainMousePosRelativeToTopLeftCornerOfWindow(const Vector2i&) const;
@@ -76,6 +87,9 @@ class C_Engine : public I_Engine {
     void drawSquire();
     void drawLevelForeground();
     void drawGUI();
+    void drawInteractibleDoodadInfoWindow(InteractibleDoodad*);
+    void drawGoblinInfoWindow(Goblin*);
+    void drawKnightInfoWindow(Knight*);
     int calculateMissingHealthPercentile(const int&, const int&);
 
     void clearLevel();
