@@ -6,7 +6,7 @@ void C_Engine::drawGameWorld() {
     drawLevelBackground();
     drawUnits();
     window.setView(foregroundView);
-    foregroundView.setCenter((float)(playerPosition / 3), (float)400);
+    foregroundView.setCenter((float)(playerPosition * 2), (float)400);
     drawLevelForeground();
 };
 
