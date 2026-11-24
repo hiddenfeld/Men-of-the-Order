@@ -18,6 +18,7 @@ struct Knight : public I_Unit {
 	void update(I_Engine*, const float&, const int&, const bool&);
 	void countDownCountdowns(const float&);
 	void move(const float&, const int&, const bool&);
+	bool checkCollision(I_Engine*);
 	void checkAggro(I_Engine*);
 	void checkCharge(I_Engine*, const float&, const int&, const bool&);
 	void checkSwing(const float&);
