@@ -9,9 +9,11 @@ void Atlas::load() {
 		return;
 	}
 	loaded = true;
+	spriteBounds.insert({SpriteName::Bush			   , {0, 0,  270,  290}});
 	spriteBounds.insert({SpriteName::DirtRoadInTheWoods, {0, 0, 1175, 1689}});
 	spriteBounds.insert({SpriteName::Goblin			   , {0, 0,  160,  220}});
 	spriteBounds.insert({SpriteName::Knight            , {0, 0,  260,  295}});
+	spriteBounds.insert({SpriteName::Log			   , {0, 0,  360,  180}});
 	spriteBounds.insert({SpriteName::Squire            , {0, 0,  260,  295}});
 	spriteBounds.insert({SpriteName::Tree              , {0, 0,  476,  449}});
 

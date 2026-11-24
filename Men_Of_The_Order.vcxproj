@@ -141,6 +141,7 @@
     <ClCompile Include="generate.cpp" />
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="InteractibleDoodad.cpp" />
     <ClCompile Include="I_Unit.cpp" />
     <ClCompile Include="knight.cpp" />
     <ClCompile Include="main.cpp" />
@@ -154,9 +155,12 @@
     <ClInclude Include="Atlas.hpp" />
     <ClInclude Include="C_Engine.hpp" />
     <ClInclude Include="Goblin.hpp" />
+    <ClInclude Include="InteractibleDoodad.hpp" />
+    <ClInclude Include="InteractibleDoodadType.hpp" />
     <ClInclude Include="I_Engine.hpp" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="OrderType.hpp" />
+    <ClInclude Include="ResourceType.hpp" />
     <ClInclude Include="SoundManager.hpp" />
     <ClInclude Include="SoundOrigin.hpp" />
     <ClInclude Include="SoundReason.hpp" />
