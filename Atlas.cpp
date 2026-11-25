@@ -35,3 +35,15 @@ void Atlas::load() {
 	localSounds.push_back(buffer);
 	bufferedSounds.insert({{SoundOrigin::Knight, SoundReason::Block		}, localSounds});
 };
+
+/*
+ Returns the chance to improve at a skill.
+ 
+ Input parameter: const int& _chanceToSucceed
+ Return value: The chance to improve as an integer * 100
+			   So 100%  is returned as 10000
+			   and 13% are returned as  1300
+*/
+int Atlas::calculateChanceToImprove(const int& _chanceToSucceed) {
+	return (int)std::pow(100 - _chanceToSucceed, 2);
+};

@@ -3,12 +3,13 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	Unit info window added for knight, goblin and interactibleDoodads
-	Debug texts added
-	Altmode and Debugmode added, activated by pressing Alt and F2
+	Chances to hit and block added to I_Unit
+	Units will only hit if a chanceToHit roll succeeds.
+	The knight will only block if a chanceToBlock roll succeeds.
+	Every time a knight tries to hit or block something, he has a chance to improve his chance by 1%.
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
-
+	The player can heal the knight by some means
 
 	TO BE CONSIDERED FOR IMPLEMENTATION: -----------------------------------------------------------------------------------------------------
 	The player has a pack mule following him around

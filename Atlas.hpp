@@ -14,4 +14,5 @@ struct Atlas {
 	static std::map<std::pair<SoundOrigin, SoundReason>, std::vector<sf::SoundBuffer>> bufferedSounds;
 
 	static void load();
+	static int calculateChanceToImprove(const int&);
 };
