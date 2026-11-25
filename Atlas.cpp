@@ -36,6 +36,22 @@ void Atlas::load() {
 	bufferedSounds.insert({{SoundOrigin::Knight, SoundReason::Block		}, localSounds});
 };
 
+bool Atlas::rollChanceToSucceed(const int& _chanceToSucceed) {
+	if (_chanceToSucceed >= 100)
+		return true;
+	if (_chanceToSucceed <=   0)
+		return false;
+	return _chanceToSucceed >= 1 + randomIntFromZeroTo(99);
+};
+
+bool Atlas::rollChanceToImprove(const int& _chanceToSucceed) {
+	if (_chanceToSucceed >= 100)
+		return false;
+	if (_chanceToSucceed <=   0)
+		return true;
+	return calculateChanceToImprove(_chanceToSucceed) >= 1 + randomIntFromZeroTo(9999);
+};
+
 /*
  Returns the chance to improve at a skill.
  

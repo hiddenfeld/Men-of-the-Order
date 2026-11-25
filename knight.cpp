@@ -106,9 +106,9 @@ void Knight::checkSwing(const float& _seconds) {
 		if (chanceToHit >= 100)
 			attackTarget->getHurt(attackDamage);
 		else {
-			if (chanceToHit >= randomIntFromZeroTo(100))
+			if (Atlas::rollChanceToSucceed(chanceToHit))
 				attackTarget->getHurt(attackDamage);
-			if (Atlas::calculateChanceToImprove(chanceToHit) >= randomIntFromZeroTo(10000))
+			if (Atlas::rollChanceToImprove(chanceToHit))
 				chanceToHit++;
 		}
 		strikeRecoveryCountdown = strikeRecoverySpeed;
@@ -154,16 +154,13 @@ void Knight::getHurt(const int& _amount) {
 		bool attackBlocked{false};
 		if (learnedBlock) {
 			if (currentBlockCooldown <= 0.0f) {
-				if (chanceToBlock >= 100) {
+				if (chanceToBlock >= 100)
 					attackBlocked = true;
-				} else {
-					int blockRoll{randomIntFromZeroTo(100)};
-					if (chanceToBlock >= blockRoll) {
+				else {
+					if (Atlas::rollChanceToSucceed(chanceToBlock))
 						attackBlocked = true;
-					}
-					if (Atlas::calculateChanceToImprove(chanceToBlock) >= randomIntFromZeroTo(10000)) {
+					if (Atlas::rollChanceToImprove(chanceToBlock))
 						chanceToBlock++;
-					}
 				}
 				if (attackBlocked) {
 					SoundManager::playSound({SoundOrigin::Knight, SoundReason::Block}, 50.0f);

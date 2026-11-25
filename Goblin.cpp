@@ -155,7 +155,7 @@ void Goblin::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 
 void Goblin::checkSwing(const float& _seconds) {
 	if (swingCountdown <= 0.0f) {
-		if (chanceToHit >= randomIntFromZeroTo(100))
+		if (Atlas::rollChanceToSucceed(chanceToHit))
 			attackTarget->getHurt(attackDamage);
 		strikeRecoveryCountdown = strikeRecoverySpeed;
 		if (attackTarget->hp == 0) {

@@ -81,7 +81,7 @@
     <ClCompile Include="Atlas.cpp">
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
-    <ClCompile Include="knight.cpp">
+    <ClCompile Include="Knight.cpp">
       <Filter>Source Files\Units, Doodads, Projectiles</Filter>
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">

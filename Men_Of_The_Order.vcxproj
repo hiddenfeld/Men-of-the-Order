@@ -144,7 +144,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="InteractibleDoodad.cpp" />
     <ClCompile Include="I_Unit.cpp" />
-    <ClCompile Include="knight.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pythagoras.cpp" />
     <ClCompile Include="RandomIntFromZeroTo.cpp" />
