@@ -6,7 +6,6 @@
 #include "OrderType.hpp"
 #include "SoundManager.hpp"
 #include "Goblin.hpp"
-#include "RandomIntFromZeroTo.cpp"
 
 struct Goblin;
 
