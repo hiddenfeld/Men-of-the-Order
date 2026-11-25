@@ -14,8 +14,10 @@ Knight::Knight(
 	const float& _swingSpeed,
 	const float& _strikeRecoverySpeed,
 	const int& _attackDamage,
+	const int& _chanceToHit,
 	const bool& _learnedBlock,
-	const float& _blockSpeed)
+	const float& _blockSpeed,
+	const int& _chanceToBlock)
 	:	I_Unit(
 			_position,
 			_movementSpeed,
@@ -28,9 +30,11 @@ Knight::Knight(
 			_attackTarget,
 			_swingSpeed,
 			_strikeRecoverySpeed,
-			_attackDamage),
+			_attackDamage,
+			_chanceToHit),
 		learnedBlock(_learnedBlock),
-		blockSpeed(_blockSpeed)
+		blockSpeed(_blockSpeed),
+		chanceToBlock(_chanceToBlock)
 {
 	currentBlockCooldown = 0.0f;
 };
@@ -99,7 +103,14 @@ void Knight::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 void Knight::checkSwing(const float& _seconds) {
 	if (swingCountdown <= 0.0f) {
 		activeOrder = OrderType::ProtectFront;
-		attackTarget->getHurt(attackDamage);
+		if (chanceToHit >= 100)
+			attackTarget->getHurt(attackDamage);
+		else {
+			if (Atlas::rollChanceToSucceed(chanceToHit))
+				attackTarget->getHurt(attackDamage);
+			if (Atlas::rollChanceToImprove(chanceToHit))
+				chanceToHit++;
+		}
 		strikeRecoveryCountdown = strikeRecoverySpeed;
 		attackTarget = NULL;
 	}
@@ -141,12 +152,22 @@ bool Knight::checkCollision(I_Engine* _engine) {
 void Knight::getHurt(const int& _amount) {
 	if (hp > 0) {
 		bool attackBlocked{false};
-		if (learnedBlock)
+		if (learnedBlock) {
 			if (currentBlockCooldown <= 0.0f) {
-				SoundManager::playSound({SoundOrigin::Knight, SoundReason::Block}, 50.0f);
-				attackBlocked = true;
-				currentBlockCooldown = blockSpeed;
+				if (chanceToBlock >= 100)
+					attackBlocked = true;
+				else {
+					if (Atlas::rollChanceToSucceed(chanceToBlock))
+						attackBlocked = true;
+					if (Atlas::rollChanceToImprove(chanceToBlock))
+						chanceToBlock++;
+				}
+				if (attackBlocked) {
+					SoundManager::playSound({SoundOrigin::Knight, SoundReason::Block}, 50.0f);
+					currentBlockCooldown = blockSpeed;
+				}
 			}
+		}
 		if (!attackBlocked) {
 			hp -= _amount;
 			SoundManager::playSound({SoundOrigin::Knight, SoundReason::Hurt}, 50.0f);

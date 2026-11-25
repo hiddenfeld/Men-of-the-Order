@@ -15,6 +15,7 @@ inline std::string convertInteractibleDoodadTypeToString(const InteractibleDooda
 			std::cout << "ERROR in EnumsToStringUtility.cpp::convertInteractibleDoodadTypeToString on line #" << __LINE__ << ". Unknown InteractibleDoodadType." << std::endl;
 			break;
 	}
+	return "<NULL>";
 };
 
 inline std::string convertResourceTypeToString(const ResourceType& _rt) {
@@ -27,4 +28,5 @@ inline std::string convertResourceTypeToString(const ResourceType& _rt) {
 			std::cout << "ERROR in EnumsToStringUtility.cpp::convertResourceTypeToString on line #" << __LINE__ << ". Unknown ResourceType." << std::endl;
 			break;
 	}
+	return "<NULL>";
 };

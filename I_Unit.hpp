@@ -18,8 +18,9 @@ struct I_Unit {
 	float swingSpeed;
 	float strikeRecoverySpeed;
 	int attackDamage;
+	int chanceToHit;
 
-	I_Unit(const int&, const int&, const bool&, const int&, const int&, const OrderType&, const int&, const int&, I_Unit*, const float&, const float&, const int&);
+	I_Unit(const int&, const int&, const bool&, const int&, const int&, const OrderType&, const int&, const int&, I_Unit*, const float&, const float&, const int&, const int&);
 
 	virtual void update(I_Engine*, const float&, const int&, const bool&) = 0;
 	virtual void move(const float&, const int&, const bool&) = 0;

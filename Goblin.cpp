@@ -15,7 +15,8 @@ Goblin::Goblin(
 			NULL,
 			0.8f,
 			2.7f,
-			2),
+			2,
+			95),
 		spawnPosition(_spawnPosition)
 {
 	patrolPosition1 = _spawnPosition - _patrolRange;
@@ -41,7 +42,8 @@ Goblin::Goblin(
 			NULL,
 			0.8f,
 			2.7f,
-			2),
+			2,
+			95),
 		spawnPosition(_spawnPosition),
 		patrolPosition1(_patrolPosition1),
 		patrolPosition2(_patrolPosition2)
@@ -66,7 +68,8 @@ Goblin::Goblin(
 	I_Unit* _attackTarget,
 	const float& _swingSpeed,
 	const float& _strikeRecoverySpeed,
-	const int& _attackDamage)
+	const int& _attackDamage,
+	const int& _chanceToHit)
 	:	I_Unit(
 			_position,
 			_movementSpeed,
@@ -79,7 +82,8 @@ Goblin::Goblin(
 			_attackTarget,
 			_swingSpeed,
 			_strikeRecoverySpeed,
-			_attackDamage),
+			_attackDamage,
+			_chanceToHit),
 		spawnPosition(_spawnPosition),
 		patrolPosition1(_patrolPosition1),
 		patrolPosition2(_patrolPosition2)
@@ -151,7 +155,8 @@ void Goblin::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 
 void Goblin::checkSwing(const float& _seconds) {
 	if (swingCountdown <= 0.0f) {
-		attackTarget->getHurt(attackDamage);
+		if (Atlas::rollChanceToSucceed(chanceToHit))
+			attackTarget->getHurt(attackDamage);
 		strikeRecoveryCountdown = strikeRecoverySpeed;
 		if (attackTarget->hp == 0) {
 			attackTarget = NULL;

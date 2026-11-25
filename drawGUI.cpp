@@ -79,7 +79,7 @@ void C_Engine::drawInteractibleDoodadInfoWindow(InteractibleDoodad* _id) {
 void C_Engine::drawGoblinInfoWindow(Goblin* _goblin) {
     rectangle.setFillColor(sf::Color::Black);
     rectangle.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 15), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 15)});
-    rectangle.setSize({250.0f, 300.0f});
+    rectangle.setSize({320.0f, 300.0f});
     window.draw(rectangle);
     helpText.setString("Goblin");
     helpText.setFillColor(sf::Color::Red);
@@ -91,21 +91,30 @@ void C_Engine::drawGoblinInfoWindow(Goblin* _goblin) {
     helpText.setString("Dmg: " + std::to_string(_goblin->attackDamage));
     helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 85)});
     window.draw(helpText);
+    helpText.setString("Chance to hit: " + std::to_string(_goblin->chanceToHit) + "%");
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 120)});
+    window.draw(helpText);
 };
 
 void C_Engine::drawKnightInfoWindow(Knight* _knight) {
     rectangle.setFillColor(sf::Color::Black);
     rectangle.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 15), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 15)});
-    rectangle.setSize({250.0f, 300.0f});
+    rectangle.setSize({320.0f, 300.0f});
     window.draw(rectangle);
     helpText.setString("Knight");
     helpText.setFillColor(sf::Color::Green);
-    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 15)});
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y +  15)});
     window.draw(helpText);
     helpText.setString("HP: " + std::to_string(_knight->hp) + " / " + std::to_string(_knight->maxHp));
-    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 50)});
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y +  50)});
     window.draw(helpText);
     helpText.setString("Dmg: " + std::to_string(_knight->attackDamage));
-    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 85)});
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y +  85)});
+    window.draw(helpText);
+    helpText.setString("Chance to hit: " + std::to_string(_knight->chanceToHit) + "%");
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 120)});
+    window.draw(helpText);
+    helpText.setString("Chance to block: " + std::to_string(_knight->chanceToBlock) + "%");
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 155)});
     window.draw(helpText);
 };
