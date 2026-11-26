@@ -2,6 +2,7 @@
 
 void C_Engine::update(const float& _elapsedSeconds) {
 	SoundManager::update();
+	countDownCooldownsAndTimewindows(_elapsedSeconds);
 	if (playerFacingRight)
 		designatedKnightPosition = playerPosition + 550;
 	else
@@ -15,4 +16,9 @@ void C_Engine::updateGoblins(const float& _elapsedSeconds) {
 		Goblin* goblin{*it};
         goblin->update(this, _elapsedSeconds, designatedKnightPosition, playerFacingRight);
     }
+};
+
+void C_Engine::countDownCooldownsAndTimewindows(const float& _seconds) {
+	countDownBy(doubleTapAButtonTimeWindow, _seconds);
+	countDownBy(doubleTapDButtonTimeWindow, _seconds);
 };

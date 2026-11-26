@@ -16,6 +16,7 @@
 #include <memory>
 #include "I_Engine.hpp"
 #include "Atlas.hpp"
+#include "CountDownByUtility.cpp"
 #include "EnumsToStringUtility.cpp"
 #include "Goblin.hpp"
 #include "InteractibleDoodad.hpp"
@@ -64,6 +65,10 @@ class C_Engine : public I_Engine {
     sf::Text helpText;
     sf::RectangleShape rectangle;
 
+    bool aButtonPressed{false};
+    bool dButtonPressed{false};
+    float doubleTapAButtonTimeWindow{0.0f};
+    float doubleTapDButtonTimeWindow{0.0f};
     bool debugModeEnabled;
     bool f2Enabled;
     bool altModeActive;
@@ -74,6 +79,7 @@ class C_Engine : public I_Engine {
 	Vector2i ascertainMousePosRelativeToTopLeftCornerOfWindow(const Vector2i&) const;
     void resetViewsAndRenderBounds();
     void update(const float&);
+    void countDownCooldownsAndTimewindows(const float&);
     void updateGoblins(const float&);
     void draw();
     void drawGameWorld();

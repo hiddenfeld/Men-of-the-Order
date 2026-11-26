@@ -3,10 +3,7 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	Chances to hit and block added to I_Unit
-	Units will only hit if a chanceToHit roll succeeds.
-	The knight will only block if a chanceToBlock roll succeeds.
-	Every time a knight tries to hit or block something, he has a chance to improve his chance by 1%.
+	Player only changes the direction he is facing when user double taps in that direction.
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 	The player can heal the knight by some means
