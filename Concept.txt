@@ -58,7 +58,7 @@
 	---> Crafting equipment
 	----> If the recruit is successful at making progress while crafting a equipment durability is added.
 	----> A newby will build a wooden buckler and it will have little durability when he is finished.
-	----> An experienced wood crafter will craft a buckler and it will have a lot of durability when he is done.*
+	----> An experienced wood crafter will craft a buckler and it will have a lot of durability when he is done.
 	-> If the game ever gains difficulty levels, the initial skill level of new recruits could be below 0% in the beginning at a hard difficulty or it could be already 50% on an easy difficulty
 
 	When recruits harvest resources, they fall on the ground nearby as chunks of resources
