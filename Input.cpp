@@ -44,8 +44,8 @@ Vector2i C_Engine::ascertainMousePosRelativeToTopLeftCornerOfWindow(const Vector
 };
 
 void C_Engine::resetViewsAndRenderBounds() {
-    gameWorldView. reset(FloatRect( 0, 0, window.getSize().x, window.getSize().y));
-    foregroundView.reset(FloatRect( 0, 0, window.getSize().x, window.getSize().y));
-    guiView.       reset(FloatRect( 0, 0, window.getSize().x, window.getSize().y));
+    gameWorldView. reset(FloatRect(0, 0, window.getSize().x, window.getSize().y));
+    foregroundView.reset(FloatRect(0, 0, window.getSize().x, window.getSize().y));
+    guiView.       reset(FloatRect(0, 0, window.getSize().x, window.getSize().y));
     xRenderBoundary = (int)(gameWorldView.getSize().x / 2) + 750;
 };

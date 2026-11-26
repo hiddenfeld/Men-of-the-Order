@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Atlas.cpp" />
+    <ClCompile Include="CountDownByUtility.cpp" />
     <ClCompile Include="C_Engine.cpp" />
     <ClCompile Include="draw.cpp" />
     <ClCompile Include="drawGameWorld.cpp" />
