@@ -11,12 +11,26 @@ void C_Engine::input() {
     }
     if (window.hasFocus()) {
         if (Keyboard::isKeyPressed(Keyboard::D)) {
+            if (!dButtonPressed) {
+                if (doubleTapDButtonTimeWindow > 0.0f)
             playerFacingRight = true;
+                doubleTapDButtonTimeWindow = 0.35f;
+            }
+            dButtonPressed = true;
             playerPosition += 15;
+        } else {
+            dButtonPressed = false;
         }
-        else if (Keyboard::isKeyPressed(Keyboard::A)) {
+        if (Keyboard::isKeyPressed(Keyboard::A)) {
+            if (!aButtonPressed) {
+                if (doubleTapAButtonTimeWindow > 0.0f)
             playerFacingRight = false;
+                doubleTapAButtonTimeWindow = 0.35f;
+            }
+            aButtonPressed = true;
             playerPosition -= 15;
+        } else {
+            aButtonPressed = false;
         }
         if (Keyboard::isKeyPressed(Keyboard::LAlt)) {
             altModeActive = true;
