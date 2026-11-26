@@ -99,6 +99,9 @@
     <ClCompile Include="EnumsToStringUtility.cpp">
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="CountDownByUtility.cpp">
+      <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C_Engine.hpp">

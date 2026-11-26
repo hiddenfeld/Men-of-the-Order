@@ -1,5 +1,6 @@
 #pragma once
 #include "I_Engine.hpp"
+#include "CountDownByUtility.cpp"
 #include "OrderType.hpp"
 
 struct I_Unit {
@@ -14,9 +15,9 @@ struct I_Unit {
 	OrderType activeOrder;
 	I_Unit* attackTarget;
 	float swingCountdown;
-	float strikeRecoveryCountdown;
 	float swingSpeed;
-	float strikeRecoverySpeed;
+	float swingRecoveryCountdown;
+	float swingRecoverySpeed;
 	int attackDamage;
 	int chanceToHit;
 

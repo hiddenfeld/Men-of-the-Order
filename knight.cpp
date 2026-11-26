@@ -62,21 +62,9 @@ void Knight::update(I_Engine* _engine, const float& _seconds, const int& _design
 };
 
 void Knight::countDownCountdowns(const float& _seconds) {
-	if (currentBlockCooldown > 0.0f) {
-		currentBlockCooldown -= _seconds;
-		if (currentBlockCooldown < 0.0f)
-			currentBlockCooldown = 0.0f;
-	}
-	if (swingCountdown > 0.0f) {
-		swingCountdown -= _seconds;
-		if (swingCountdown < 0.0f)
-			swingCountdown = 0.0f;
-	}
-	if (strikeRecoveryCountdown > 0.0f) {
-		strikeRecoveryCountdown -= _seconds;
-		if (strikeRecoveryCountdown < 0.0f)
-			strikeRecoveryCountdown = 0.0f;
-	}
+	countDownBy(swingCountdown, _seconds);
+	countDownBy(swingRecoveryCountdown, _seconds);
+	countDownBy(currentBlockCooldown, _seconds);
 };
 
 void Knight::checkAggro(I_Engine* _engine) {
@@ -85,7 +73,7 @@ void Knight::checkAggro(I_Engine* _engine) {
 		if (goblin->hp > 0) {
 			int distanceBetweenThisAndTarget{std::abs(position - goblin->position)};
 			if (distanceBetweenThisAndTarget <= attackRange + goblin->attackRange) {
-				if (strikeRecoveryCountdown <= 0.0f) {
+				if (swingRecoveryCountdown <= 0.0f) {
 					// initiate melee attack
 					activeOrder = OrderType::Swing;
 					attackTarget = goblin;
@@ -111,7 +99,7 @@ void Knight::checkSwing(const float& _seconds) {
 			if (Atlas::rollChanceToImprove(chanceToHit))
 				chanceToHit++;
 		}
-		strikeRecoveryCountdown = strikeRecoverySpeed;
+		swingRecoveryCountdown = swingRecoverySpeed;
 		attackTarget = NULL;
 	}
 };

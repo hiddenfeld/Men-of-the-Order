@@ -23,7 +23,7 @@ Goblin::Goblin(
 	patrolPosition2 = _spawnPosition + _patrolRange;
 	patrolingToPoint1 = false;
 	swingCountdown = 0.0f;
-	strikeRecoveryCountdown = 0.0f;
+	swingRecoveryCountdown = 0.0f;
 };
 
 Goblin::Goblin(
@@ -50,7 +50,7 @@ Goblin::Goblin(
 {
 	patrolingToPoint1 = false;
 	swingCountdown = 0.0f;
-	strikeRecoveryCountdown = 0.0f;
+	swingRecoveryCountdown = 0.0f;
 };
 
 Goblin::Goblin(
@@ -90,7 +90,7 @@ Goblin::Goblin(
 {
 	patrolingToPoint1 = false;
 	swingCountdown = 0.0f;
-	strikeRecoveryCountdown = 0.0f;
+	swingRecoveryCountdown = 0.0f;
 };
 
 void Goblin::update(I_Engine* _engine, const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
@@ -115,16 +115,8 @@ void Goblin::update(I_Engine* _engine, const float& _seconds, const int& _design
 };
 
 void Goblin::countDownCountdowns(const float& _seconds) {
-	if (strikeRecoveryCountdown > 0.0f) {
-		strikeRecoveryCountdown -= _seconds;
-		if (strikeRecoveryCountdown < 0.0f)
-			strikeRecoveryCountdown = 0.0f;
-	}
-	if (swingCountdown > 0.0f) {
-		swingCountdown -= _seconds;
-		if (swingCountdown < 0.0f)
-			swingCountdown = 0.0f;
-	}
+	countDownBy(swingRecoveryCountdown, _seconds);
+	countDownBy(swingCountdown, _seconds);
 };
 
 void Goblin::checkAggro(I_Engine* _engine) {
@@ -145,7 +137,7 @@ void Goblin::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 	if (distanceBetweenThisAndTarget > attackRange + attackTarget->attackRange)
 		move(_seconds, _designatedPosition, _playerFacingRight);
 	else {
-		if (strikeRecoveryCountdown <= 0.0f) {
+		if (swingRecoveryCountdown <= 0.0f) {
 			// initiate melee attack
 			activeOrder = OrderType::Swing;
 			swingCountdown = swingSpeed;
@@ -157,7 +149,7 @@ void Goblin::checkSwing(const float& _seconds) {
 	if (swingCountdown <= 0.0f) {
 		if (Atlas::rollChanceToSucceed(chanceToHit))
 			attackTarget->getHurt(attackDamage);
-		strikeRecoveryCountdown = strikeRecoverySpeed;
+		swingRecoveryCountdown = swingRecoverySpeed;
 		if (attackTarget->hp == 0) {
 			attackTarget = NULL;
 			activeOrder = OrderType::Patrol;

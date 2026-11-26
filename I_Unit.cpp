@@ -12,7 +12,7 @@ I_Unit::I_Unit(
 	const int& _aggroRange,
 	I_Unit* _attackTarget,
 	const float& _swingSpeed,
-	const float& _strikeRecoverySpeed,
+	const float& _swingRecoverySpeed,
 	const int& _attackDamage,
 	const int& _chanceToHit)
 	:	position(_position),
@@ -25,10 +25,10 @@ I_Unit::I_Unit(
 		aggroRange(_aggroRange),
 		attackTarget(_attackTarget),
 		swingSpeed(_swingSpeed),
-		strikeRecoverySpeed(_strikeRecoverySpeed),
+		swingRecoverySpeed(_swingRecoverySpeed),
 		attackDamage(_attackDamage),
 		chanceToHit(_chanceToHit)
 {
 	swingCountdown = 0.0f;
-	strikeRecoveryCountdown = 0.0f;
+	swingRecoveryCountdown = 0.0f;
 };
