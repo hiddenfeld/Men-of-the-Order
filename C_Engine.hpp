@@ -21,8 +21,9 @@
 #include "Goblin.hpp"
 #include "InteractibleDoodad.hpp"
 #include "Knight.hpp"
-#include "RandomIntFromZeroTo.cpp"
 #include "Pythagoras.cpp"
+#include "RandomIntFromZeroTo.cpp"
+#include "SpellOrb.hpp"
 
 using namespace sf;
 
@@ -55,10 +56,14 @@ class C_Engine : public I_Engine {
 
     bool playerFacingRight;
     int playerPosition;
+    float playerSpellOrbLaunchCooldown{0.0f};
+    float playerSpellOrbLaunchSpeed{1.0f};
     int designatedKnightPosition;
 
     std::vector<Goblin*> goblins;
     Knight* knight;
+
+    std::vector<SpellOrb*> spellOrbs;
 
     Font arialFont;
     sf::Text debugText;
@@ -67,6 +72,8 @@ class C_Engine : public I_Engine {
 
     bool aButtonPressed{false};
     bool dButtonPressed{false};
+    bool leftMouseButtonDown{false};
+    bool rightMouseButtonDown{false};
     float doubleTapAButtonTimeWindow{0.0f};
     float doubleTapDButtonTimeWindow{0.0f};
     bool debugModeEnabled;
@@ -78,9 +85,13 @@ class C_Engine : public I_Engine {
     Vector2i mousePosRelativeToTopLeftCornerOfWindow;
 	Vector2i ascertainMousePosRelativeToTopLeftCornerOfWindow(const Vector2i&) const;
     void resetViewsAndRenderBounds();
+    void inputTriggersSpellOrbShot();
+
     void update(const float&);
     void countDownCooldownsAndTimewindows(const float&);
+    void updateSpellOrbs(const float&);
     void updateGoblins(const float&);
+
     void draw();
     void drawGameWorld();
     void drawLevelBackground();
@@ -91,6 +102,8 @@ class C_Engine : public I_Engine {
     void drawGoblin(Goblin*);
     void drawKnight();
     void drawSquire();
+    void drawSpellOrbs();
+    void drawSpellOrb(SpellOrb*);
     void drawLevelForeground();
     void drawGUI();
     void drawInteractibleDoodadInfoWindow(InteractibleDoodad*);

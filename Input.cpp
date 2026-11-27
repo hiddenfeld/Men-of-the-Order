@@ -48,6 +48,17 @@ void C_Engine::input() {
         } else {
             f2Enabled = true;
         }
+        if (Mouse::isButtonPressed(Mouse::Left))
+            leftMouseButtonDown = true;
+        else
+            leftMouseButtonDown = false;
+        if (Mouse::isButtonPressed(Mouse::Right))
+            rightMouseButtonDown = true;
+        else
+            rightMouseButtonDown = false;
+        if (   leftMouseButtonDown
+            && rightMouseButtonDown)
+            inputTriggersSpellOrbShot();
     }
 	mousePosRelativeToTopLeftCornerOfWindow = ascertainMousePosRelativeToTopLeftCornerOfWindow(Mouse::getPosition());
 };
@@ -62,4 +73,14 @@ void C_Engine::resetViewsAndRenderBounds() {
     foregroundView.reset(FloatRect(0, 0, window.getSize().x, window.getSize().y));
     guiView.       reset(FloatRect(0, 0, window.getSize().x, window.getSize().y));
     xRenderBoundary = (int)(gameWorldView.getSize().x / 2) + 750;
+};
+
+void C_Engine::inputTriggersSpellOrbShot() {
+    if (playerSpellOrbLaunchCooldown <= 0.0f) {
+        if (playerFacingRight)
+            spellOrbs.push_back(new SpellOrb({(float)playerPosition + 90.0f, 400.0f}, {500.0f, 0.0f}, 4.0f));
+        else
+            spellOrbs.push_back(new SpellOrb({(float)playerPosition - 90.0f, 400.0f}, {-500.0f, 0.0f}, 4.0f));
+        playerSpellOrbLaunchCooldown = playerSpellOrbLaunchSpeed;
+    }
 };

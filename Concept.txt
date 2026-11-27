@@ -3,10 +3,15 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	Player only changes the direction he is facing when user double taps in that direction.
+	User can hold down both left click and right click to launch a spell orb in the direction the player is facing.
+	The spell orb originally flies out from the squire and towards the edge of the screen.
+	It has a limited time to live, which is counted down as the game proceeds.
+	It is drawn as a green circle with pulsating white outline.
+	Acceleration towards a target was added for future use in boomerang-kind-of-backstabbing-magic-attacks.
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 	The player can heal the knight by some means
+	Boomerang-kind-of-backstabbing-magic-attacks shooting goblins need to be added to the game.
 
 	TO BE CONSIDERED FOR IMPLEMENTATION: -----------------------------------------------------------------------------------------------------
 	The player has a pack mule following him around

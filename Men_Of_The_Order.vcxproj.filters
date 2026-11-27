@@ -25,9 +25,6 @@
     <Filter Include="Source Files\C_Engine">
       <UniqueIdentifier>{1197d3f3-32c5-416e-98e7-9f77d9149168}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Units, Doodads, Projectiles">
-      <UniqueIdentifier>{b9d730a8-b52f-4acb-978e-a39049167246}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Enums">
       <UniqueIdentifier>{b9149e6c-179a-4aaa-b11d-9c2c09012829}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,21 @@
     </Filter>
     <Filter Include="Resource Files\Concept">
       <UniqueIdentifier>{2d8a984f-36dc-48b8-a111-2de23abbbe06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Projectiles">
+      <UniqueIdentifier>{4b835c19-e9cd-444b-a360-de2c2c9a94cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Units">
+      <UniqueIdentifier>{b9d730a8-b52f-4acb-978e-a39049167246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Projectiles">
+      <UniqueIdentifier>{31b7f0c0-35bc-4129-bd4c-75831a05652a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Doodads">
+      <UniqueIdentifier>{a7a43a07-4ef0-4155-a825-e5c7620f246c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Doodads">
+      <UniqueIdentifier>{d5328263-cc57-4226-a657-62c05f470cca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -82,25 +94,28 @@
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
     <ClCompile Include="Knight.cpp">
-      <Filter>Source Files\Units, Doodads, Projectiles</Filter>
+      <Filter>Source Files\Units</Filter>
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
     <ClCompile Include="Goblin.cpp">
-      <Filter>Source Files\Units, Doodads, Projectiles</Filter>
+      <Filter>Source Files\Units</Filter>
     </ClCompile>
     <ClCompile Include="I_Unit.cpp">
-      <Filter>Source Files\Units, Doodads, Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="InteractibleDoodad.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Units</Filter>
     </ClCompile>
     <ClCompile Include="EnumsToStringUtility.cpp">
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
     <ClCompile Include="CountDownByUtility.cpp">
       <Filter>Source Files\C_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellOrb.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractibleDoodad.cpp">
+      <Filter>Source Files\Doodads</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,14 +152,17 @@
     <ClInclude Include="I_Engine.hpp">
       <Filter>Header Files\Engine level</Filter>
     </ClInclude>
-    <ClInclude Include="InteractibleDoodad.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="InteractibleDoodadType.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractibleDoodad.hpp">
+      <Filter>Header Files\Doodads</Filter>
     </ClInclude>
     <ClInclude Include="ResourceType.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellOrb.hpp">
+      <Filter>Header Files\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

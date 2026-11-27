@@ -6,6 +6,7 @@ void C_Engine::drawGameWorld() {
     drawLevelBackground();
     drawInteractibleDoodads();
     drawUnits();
+    drawSpellOrbs();
     window.setView(foregroundView);
     foregroundView.setCenter((float)(playerPosition * 2), (float)400);
     drawLevelForeground();
@@ -133,6 +134,26 @@ void C_Engine::drawSquire() {
         window.draw(debugText);
     }
 }
+
+void C_Engine::drawSpellOrbs() {
+    for (unsigned int i{0}; i < spellOrbs.size(); i++)
+        drawSpellOrb(spellOrbs.at(i));
+};
+
+void C_Engine::drawSpellOrb(SpellOrb* _orb) {
+    sf::CircleShape circleShape{};
+    circleShape.setFillColor(sf::Color::Green);
+    int pulseNumber{(int)(_orb->timeToLive * 10.0f) % 4};
+    if (   pulseNumber == 0
+        || pulseNumber == 1) {
+        circleShape.setOutlineColor(sf::Color::White);
+        circleShape.setOutlineThickness(3);
+    }
+    circleShape.setRadius(20.0f);
+    circleShape.setPosition(_orb->position);
+    circleShape.setOrigin(10.0f,10.0f);
+    window.draw(circleShape);
+};
 
 void C_Engine::drawLevelForeground() {
     treeSprite.setScale(1.7f, 1.7f);
