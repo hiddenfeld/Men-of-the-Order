@@ -64,6 +64,8 @@ void C_Engine::start() {
     while (window.isOpen()) {
         Time dt{clock.restart()};
         float elapsedSeconds{dt.asSeconds()};
+        if (elapsedSeconds > 0.05f)
+            elapsedSeconds = 0.05f;
         relativeMousePosition = {(int)(Mouse::getPosition().x - window.getPosition().x -  8 - (gameWorldView.getSize().x / 2) + gameWorldView.getCenter().x),
                                  (int)(Mouse::getPosition().y - window.getPosition().y - 30 - (gameWorldView.getSize().y / 2) + gameWorldView.getCenter().y)};
         input();
