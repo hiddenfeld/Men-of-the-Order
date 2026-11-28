@@ -80,8 +80,7 @@ void C_Engine::inputTriggersSpellOrbShot() {
         sf::Vector2f spellOrbMovement{(float)(relativeMousePosition.x) - (float)playerPosition,
                                       (float)(relativeMousePosition.y) - 400.0f};
         spellOrbs.push_back(new SpellOrb({(float)playerPosition, gameWorldView.getCenter().y},
-                                         lengthenVector(normalizeVector(spellOrbMovement),
-                                         600.0f),
+                                         lengthenVector(normalizeVector(spellOrbMovement), 600.0f),
                                          5.0f));
         playerSpellOrbLaunchCooldown = playerSpellOrbLaunchSpeed;
     }
