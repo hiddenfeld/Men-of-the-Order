@@ -17,7 +17,18 @@ void C_Engine::input() {
                 doubleTapDButtonTimeWindow = 0.35f;
             }
             dButtonPressed = true;
-            playerPosition += 15;
+            bool collisionToTheRightDetected{false};
+            for (std::vector<Goblin*>::iterator it{goblins.begin()}; it != goblins.end(); it++) {
+		        I_Unit* goblin{*it};
+		        if (goblin->hp > 0) {
+			        int distanceBetweenThisAndTarget{std::abs(playerPosition - goblin->position)};
+			        if (   distanceBetweenThisAndTarget <= 100 + goblin->attackRange - 50
+                        && goblin->position > playerPosition)
+				        collisionToTheRightDetected = true;
+		        }
+	        }
+	        if (!collisionToTheRightDetected)
+                playerPosition += 12;
         } else {
             dButtonPressed = false;
         }
@@ -28,7 +39,18 @@ void C_Engine::input() {
                 doubleTapAButtonTimeWindow = 0.35f;
             }
             aButtonPressed = true;
-            playerPosition -= 15;
+            bool collisionToTheLeftDetected{false};
+            for (std::vector<Goblin*>::iterator it{goblins.begin()}; it != goblins.end(); it++) {
+		        I_Unit* goblin{*it};
+		        if (goblin->hp > 0) {
+			        int distanceBetweenThisAndTarget{std::abs(playerPosition - goblin->position)};
+			        if (   distanceBetweenThisAndTarget <= 100 + goblin->attackRange - 50
+                        && goblin->position < playerPosition)
+				        collisionToTheLeftDetected = true;
+		        }
+	        }
+	        if (!collisionToTheLeftDetected)
+                playerPosition -= 12;
         } else {
             aButtonPressed = false;
         }
