@@ -6,8 +6,8 @@ C_Engine::C_Engine() {
          (float)VideoMode::getDesktopMode().height}
     );
     window.create(
-        VideoMode((resolution.x * 3) / 4,
-                  (resolution.y * 3) / 4),
+        VideoMode((unsigned int)(((int)(resolution.x) * 3) / 4),
+                  (unsigned int)(((int)(resolution.y) * 3) / 4)),
         "Men of the Order",
         Style::Default
     );

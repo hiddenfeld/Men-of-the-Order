@@ -3,12 +3,8 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	SpellOrbs cannot penetrate the ground and are deleted if the y coordinate becomes to high.
-	SpellOrbs shot by the player heal the knight by 1 hp if he is not dead or at full hp.
-	A sound appears if this happens.
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
-	The player can heal the knight by some means
 	Boomerang-kind-of-backstabbing-magic-attacks shooting goblins need to be added to the game.
 
 	TO BE CONSIDERED FOR IMPLEMENTATION: -----------------------------------------------------------------------------------------------------
