@@ -123,6 +123,9 @@
     <ClCompile Include="VectorMathUtility.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Worker.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C_Engine.hpp">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="SpellOrb.hpp">
       <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Worker.hpp">
+      <Filter>Header Files\Units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

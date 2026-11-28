@@ -19,6 +19,7 @@ struct Goblin : public I_Unit {
 	void countDownCountdowns(const float&);
 	void move(const float&, const int&, const bool&);
 	void checkAggro(I_Engine*);
+	bool checkAggroForUnit(I_Unit*);
 	void checkCharge(I_Engine*, const float&, const int&, const bool&);
 	void checkSwing(const float&);
 	void getHurt(const int&);

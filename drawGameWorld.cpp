@@ -50,6 +50,7 @@ void C_Engine:: drawInteractibleDoodad(InteractibleDoodad* _id) {
 void C_Engine::drawUnits() {
     drawGoblins();
     drawKnight();
+    drawWorker();
     drawSquire();
 };
 
@@ -117,6 +118,28 @@ void C_Engine::drawKnight() {
     if (debugModeEnabled) {
         debugText.setString("(" + std::to_string(knight->position) + ")");
         debugText.setPosition((float)(knight->position - 50), 600.0f);
+        window.draw(debugText);
+    }
+}
+
+void C_Engine::drawWorker() {
+    int yOffset{0};
+    if (   worker->activeOrder == OrderType::Swing
+        || worker->activeOrder == OrderType::Harvest)
+        yOffset = 295;
+    if (worker->facingRight)
+        workerSprite.setTextureRect({Atlas::spriteBounds.at(SpriteName::Worker).width, yOffset, Atlas::spriteBounds.at(SpriteName::Worker).width, Atlas::spriteBounds.at(SpriteName::Worker).height});
+    else
+        workerSprite.setTextureRect({                                               0, yOffset, Atlas::spriteBounds.at(SpriteName::Worker).width, Atlas::spriteBounds.at(SpriteName::Worker).height});
+    workerSprite.setPosition((float)(worker->position - 130), 300.0f);
+    workerSprite.setColor({(sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(worker->hp, worker->maxHp) * 1.25f)),
+                           (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(worker->hp, worker->maxHp) * 2.50f)),
+                           (sf::Uint8)(255 - (int)((float)calculateMissingHealthPercentile(worker->hp, worker->maxHp) * 2.50f)),
+                                       255});
+    window.draw(workerSprite);
+    if (debugModeEnabled) {
+        debugText.setString("(" + std::to_string(worker->position) + ")");
+        debugText.setPosition((float)(worker->position - 50), 600.0f);
         window.draw(debugText);
     }
 }

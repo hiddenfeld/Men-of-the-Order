@@ -154,6 +154,7 @@
     <ClCompile Include="SpellOrb.cpp" />
     <ClCompile Include="update.cpp" />
     <ClCompile Include="VectorMathUtility.cpp" />
+    <ClCompile Include="Worker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Atlas.hpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="I_Unit.hpp" />
     <ClInclude Include="SpellOrb.hpp" />
     <ClInclude Include="WASDDirection.hpp" />
+    <ClInclude Include="Worker.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />

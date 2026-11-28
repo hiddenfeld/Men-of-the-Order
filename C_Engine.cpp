@@ -29,16 +29,12 @@ C_Engine::C_Engine() {
 
     playerFacingRight = false;
     playerPosition = 0;
-    knight = new Knight(0, 300, false, 8, 10, OrderType::ProtectFront, 110, 600, NULL, 1.0f, 2.0f, 2, 40, true, 2.0f, 40);
-    {   Goblin* goblin{new Goblin(-2000, 800)};
-        goblins.push_back(goblin);
-    } { Goblin* goblin{new Goblin(-3400, 750)};
-        goblins.push_back(goblin);
-    } { Goblin* goblin{new Goblin( 2000, 800)};
-        goblins.push_back(goblin);
-    } { Goblin* goblin{new Goblin( 2500, 600)};
-        goblins.push_back(goblin);
-    }
+    knight = new Knight(0, 250, false, 8, 10, OrderType::ProtectFront, 110, 600, NULL, 1.0f, 2.0f, 2, 40, true, 2.0f, 40);
+    worker = new Worker(0, 300, false, 3,  4, OrderType::Follow, 110, 600, NULL, 1.0f, 2.0f, 1, 0);
+    goblins.push_back(new Goblin(-2000, 800));
+    goblins.push_back(new Goblin(-3400, 750));
+    goblins.push_back(new Goblin( 2000, 800));
+    goblins.push_back(new Goblin( 2500, 600));
     dirtRoadInTheWoodsSpritesheet.loadFromFile("spritesheets/dirtRoadInTheWoods.jpg");
     dirtRoadInTheWoodsSprite.setTexture(dirtRoadInTheWoodsSpritesheet);
     goblinSpritesheet.loadFromFile("spritesheets/goblin.png");
@@ -56,6 +52,8 @@ C_Engine::C_Engine() {
     squireSpritesheet.loadFromFile("spritesheets/squire.png");
     squireSprite.setTexture(squireSpritesheet);
     squireSprite.setTextureRect({0, 0, 260, 295});
+    workerSpritesheet.loadFromFile("spritesheets/worker.png");
+    workerSprite.setTexture(workerSpritesheet);
 };
 
 void C_Engine::start() {
@@ -80,4 +78,8 @@ std::vector<Goblin*>* C_Engine::getGoblins() {
 
 I_Unit* C_Engine::getKnight() {
     return knight;
+};
+
+I_Unit* C_Engine::getWorker() {
+    return worker;
 };

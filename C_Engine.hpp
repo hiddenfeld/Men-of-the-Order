@@ -25,6 +25,7 @@
 #include "RandomIntFromZeroTo.cpp"
 #include "SpellOrb.hpp"
 #include "VectorMathUtility.cpp"
+#include "Worker.hpp"
 
 using namespace sf;
 
@@ -49,6 +50,8 @@ class C_Engine : public I_Engine {
     Sprite treeSprite;
     Texture squireSpritesheet;
     Sprite squireSprite;
+    Texture workerSpritesheet;
+    Sprite workerSprite;
 
     int xRenderBoundary;
     std::vector<int> backgroundTreePositions;
@@ -60,9 +63,11 @@ class C_Engine : public I_Engine {
     float playerSpellOrbLaunchCooldown{0.0f};
     float playerSpellOrbLaunchSpeed{1.0f};
     int designatedKnightPosition;
+    int designatedWorkerPosition;
 
     std::vector<Goblin*> goblins;
     Knight* knight;
+    Worker* worker;
 
     std::vector<SpellOrb*> spellOrbs;
 
@@ -103,6 +108,7 @@ class C_Engine : public I_Engine {
     void drawGoblin(Goblin*);
     void drawKnight();
     void drawSquire();
+    void drawWorker();
     void drawSpellOrbs();
     void drawSpellOrb(SpellOrb*);
     void drawLevelForeground();
@@ -110,6 +116,7 @@ class C_Engine : public I_Engine {
     void drawInteractibleDoodadInfoWindow(InteractibleDoodad*);
     void drawGoblinInfoWindow(Goblin*);
     void drawKnightInfoWindow(Knight*);
+    void drawWorkerInfoWindow(Worker*);
     int calculateMissingHealthPercentile(const int&, const int&);
 
     void clearLevel();
@@ -122,4 +129,5 @@ public:
     void save();
     std::vector<Goblin*>* getGoblins();
     I_Unit* getKnight();
+    I_Unit* getWorker();
 };

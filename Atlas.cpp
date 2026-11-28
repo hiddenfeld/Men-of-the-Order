@@ -16,6 +16,7 @@ void Atlas::load() {
 	spriteBounds.insert({SpriteName::Log			   , {0, 0,  360,  180}});
 	spriteBounds.insert({SpriteName::Squire            , {0, 0,  260,  295}});
 	spriteBounds.insert({SpriteName::Tree              , {0, 0,  476,  449}});
+	spriteBounds.insert({SpriteName::Worker            , {0, 0,  260,  295}});
 
 	std::vector<sf::SoundBuffer> localSounds;
 	sf::SoundBuffer buffer;
