@@ -17,7 +17,8 @@ void C_Engine::updateSpellOrbs(const float& _elapsedSeconds) {
 		SpellOrb* spellOrb{spellOrbs.at(i)};
         spellOrb->update(_elapsedSeconds);
 		if (   spellOrb->timeToLive <= 0.0f
-			|| spellOrb->spent) {
+			|| spellOrb->spent
+			|| spellOrb->position.y > 600.0f) {
 			delete(spellOrbs.at(i));
 			spellOrbs.at(i) = NULL;
 		}
