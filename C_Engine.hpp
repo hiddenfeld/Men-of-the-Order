@@ -24,6 +24,7 @@
 #include "Pythagoras.cpp"
 #include "RandomIntFromZeroTo.cpp"
 #include "SpellOrb.hpp"
+#include "VectorMathUtility.cpp"
 
 using namespace sf;
 
