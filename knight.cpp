@@ -12,7 +12,7 @@ Knight::Knight(
 	const int& _aggroRange,
 	I_Unit* _attackTarget,
 	const float& _swingSpeed,
-	const float& _strikeRecoverySpeed,
+	const float& _swingRecoverySpeed,
 	const int& _attackDamage,
 	const int& _chanceToHit,
 	const bool& _learnedBlock,
@@ -29,7 +29,7 @@ Knight::Knight(
 			_aggroRange,
 			_attackTarget,
 			_swingSpeed,
-			_strikeRecoverySpeed,
+			_swingRecoverySpeed,
 			_attackDamage,
 			_chanceToHit),
 		learnedBlock(_learnedBlock),
@@ -89,6 +89,10 @@ void Knight::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 };
 
 void Knight::checkSwing(const float& _seconds) {
+	if (attackTarget->position > position)
+		facingRight = true;
+	else
+		facingRight = false;
 	if (swingCountdown <= 0.0f) {
 		activeOrder = OrderType::ProtectFront;
 		if (chanceToHit >= 100)

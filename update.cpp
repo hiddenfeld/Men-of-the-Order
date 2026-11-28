@@ -7,9 +7,14 @@ void C_Engine::update(const float& _elapsedSeconds) {
 		designatedKnightPosition = playerPosition + 550;
 	else
 		designatedKnightPosition = playerPosition - 550;
+	if (playerFacingRight)
+		designatedWorkerPosition = playerPosition - 350;
+	else
+		designatedWorkerPosition = playerPosition + 350;
 	updateSpellOrbs(_elapsedSeconds);
 	updateGoblins(_elapsedSeconds);
 	knight->update(this, _elapsedSeconds, designatedKnightPosition, playerFacingRight);
+	worker->update(this, _elapsedSeconds, designatedWorkerPosition, playerFacingRight);
 };
 
 void C_Engine::updateSpellOrbs(const float& _elapsedSeconds) {
@@ -21,6 +26,13 @@ void C_Engine::updateSpellOrbs(const float& _elapsedSeconds) {
 				&& knight->hp > 0
 				&& knight->hp < knight->maxHp) {
 				knight->getHealed(1);
+				if (spellOrb->timeToLive > 0.15f)
+					spellOrb->timeToLive = 0.15f;
+				spellOrb->spent = true;
+			} else if (   calculateDistance(spellOrb->position, sf::Vector2i{worker->position, 435}) < 140.0f
+					   && worker->hp > 0
+					   && worker->hp < worker->maxHp) {
+				worker->getHealed(1);
 				if (spellOrb->timeToLive > 0.15f)
 					spellOrb->timeToLive = 0.15f;
 				spellOrb->spent = true;

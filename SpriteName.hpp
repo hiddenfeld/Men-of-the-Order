@@ -7,5 +7,6 @@ enum class SpriteName{
 	Knight,
 	Log,
 	Tree,
-	Squire
+	Squire,
+	Worker
 };

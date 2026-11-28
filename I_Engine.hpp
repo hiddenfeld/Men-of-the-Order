@@ -7,4 +7,5 @@ struct Goblin;
 struct I_Engine {
 	virtual std::vector<Goblin*>* getGoblins() = 0;
 	virtual I_Unit* getKnight() = 0;
+	virtual I_Unit* getWorker() = 0;
 };

@@ -120,12 +120,20 @@ void Goblin::countDownCountdowns(const float& _seconds) {
 };
 
 void Goblin::checkAggro(I_Engine* _engine) {
-	I_Unit* unit{_engine->getKnight()};
-	if (   std::abs(position - unit->position) < aggroRange
-		&& unit->hp > 0) {
+	if (checkAggroForUnit(_engine->getKnight()))
+		return;
+	if (checkAggroForUnit(_engine->getWorker()))
+		return;
+};
+
+bool Goblin::checkAggroForUnit(I_Unit* _unit) {
+	if (   std::abs(position - _unit->position) < aggroRange
+		&& _unit->hp > 0) {
 		activeOrder = OrderType::Charge;
-		attackTarget = unit;
+		attackTarget = _unit;
+		return true;
 	}
+	return false;
 };
 
 void Goblin::checkCharge(I_Engine* _engine, const float& _seconds, const int& _designatedPosition, const bool& _playerFacingRight) {
@@ -146,6 +154,10 @@ void Goblin::checkCharge(I_Engine* _engine, const float& _seconds, const int& _d
 };
 
 void Goblin::checkSwing(const float& _seconds) {
+	if (attackTarget->position > position)
+		facingRight = true;
+	else
+		facingRight = false;
 	if (swingCountdown <= 0.0f) {
 		if (Atlas::rollChanceToSucceed(chanceToHit))
 			attackTarget->getHurt(attackDamage);

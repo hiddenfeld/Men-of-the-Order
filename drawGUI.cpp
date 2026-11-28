@@ -37,6 +37,15 @@ void C_Engine::drawGUI() {
         cursorSprite.setColor(sf::Color::Green);
     }
 
+    if (   std::abs(relativeMousePosition.x - worker->position) < 100
+        && relativeMousePosition.y > 300
+        && relativeMousePosition.y < 600)
+    {
+        if (altModeActive)
+            drawWorkerInfoWindow(worker);
+        cursorSprite.setColor(sf::Color::Green);
+    }
+
     if (altModeActive) {
         rectangle.setFillColor(sf::Color::Black);
         rectangle.setPosition({0.0f, 0.0f});
@@ -122,5 +131,25 @@ void C_Engine::drawKnightInfoWindow(Knight* _knight) {
     window.draw(helpText);
     helpText.setString("Chance to block: " + std::to_string(_knight->chanceToBlock) + "%");
     helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 155)});
+    window.draw(helpText);
+};
+
+void C_Engine::drawWorkerInfoWindow(Worker* _worker) {
+    rectangle.setFillColor(sf::Color::Black);
+    rectangle.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 15), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 15)});
+    rectangle.setSize({320.0f, 300.0f});
+    window.draw(rectangle);
+    helpText.setString("Worker");
+    helpText.setFillColor(sf::Color::Green);
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y +  15)});
+    window.draw(helpText);
+    helpText.setString("HP: " + std::to_string(_worker->hp) + " / " + std::to_string(_worker->maxHp));
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y +  50)});
+    window.draw(helpText);
+    helpText.setString("Dmg: " + std::to_string(_worker->attackDamage));
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y +  85)});
+    window.draw(helpText);
+    helpText.setString("Chance to hit: " + std::to_string(_worker->chanceToHit) + "%");
+    helpText.setPosition({(float)(mousePosRelativeToTopLeftCornerOfWindow.x + 25), (float)(mousePosRelativeToTopLeftCornerOfWindow.y + 120)});
     window.draw(helpText);
 };
