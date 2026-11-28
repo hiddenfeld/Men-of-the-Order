@@ -3,11 +3,11 @@
 #include <math.h>
 
 inline float calculateVectorLength(const float& _x, const float& _y) {
-	return std::sqrt(std::pow(_x, 2) + std::pow(_y, 2));
+	return (float)std::sqrt(std::pow(_x, 2) + std::pow(_y, 2));
 };
 
 inline float calculateVectorLength(const sf::Vector2f& _vector) {
-	return std::sqrt(std::pow(_vector.x, 2) + std::pow(_vector.y, 2));
+	return (float)std::sqrt(std::pow(_vector.x, 2) + std::pow(_vector.y, 2));
 };
 
 inline sf::Vector2f normalizeVector(const float& _x, const float& _y) {

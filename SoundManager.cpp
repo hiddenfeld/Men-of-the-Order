@@ -23,9 +23,9 @@ void SoundManager::playSound( const std::pair<SoundOrigin, SoundReason>& _pair, 
 			if (sounds.at(i) == NULL) {
 				sounds.at(i) = new sf::Sound;
 				if (Atlas::bufferedSounds.at(_pair).size() > 1) {
-					sounds.at(i)->setBuffer( Atlas::bufferedSounds.at(_pair).at(randomIntFromZeroTo( Atlas::bufferedSounds.at(_pair).size() - 1 )) );
+					sounds.at(i)->setBuffer(Atlas::bufferedSounds.at(_pair).at(randomIntFromZeroTo((unsigned int)(Atlas::bufferedSounds.at(_pair).size() - 1))));
 				} else {
-					sounds.at(i)->setBuffer( Atlas::bufferedSounds.at(_pair).at(0) );
+					sounds.at(i)->setBuffer(Atlas::bufferedSounds.at(_pair).at(0));
 				}
 				float instanceVolume{ SoundManager::volume - ( 80.f * ( _volumeByDistanceToPlayer / 900.0f ) ) };
 				if (instanceVolume < SoundManager::volume * 0.04f) {
