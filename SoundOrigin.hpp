@@ -4,5 +4,6 @@ enum class SoundOrigin {
 	None,
 	Goblin,
 	Knight,
-	Squire
+	Squire,
+	SpellOrb
 };

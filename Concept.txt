@@ -3,10 +3,9 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	The player can shoot spellOrbs in any direction.
-	The spellOrb is shot towards the mouse.
-	The speed of the orb is constant.
-	It is only rendered if it's been around for 0.1 seconds already, so it's not visible when it's "inside" the squire so to speak.
+	SpellOrbs cannot penetrate the ground and are deleted if the y coordinate becomes to high.
+	SpellOrbs shot by the player heal the knight by 1 hp if he is not dead or at full hp.
+	A sound appears if this happens.
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 	The player can heal the knight by some means

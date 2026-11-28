@@ -16,8 +16,16 @@ void C_Engine::updateSpellOrbs(const float& _elapsedSeconds) {
 	for (unsigned int i{0}; i < spellOrbs.size(); i++) {
 		SpellOrb* spellOrb{spellOrbs.at(i)};
         spellOrb->update(_elapsedSeconds);
+		if (!spellOrb->spent)
+			if (   calculateDistance(spellOrb->position, sf::Vector2i{knight->position, 435}) < 140.0f
+				&& knight->hp > 0
+				&& knight->hp < knight->maxHp) {
+				knight->getHealed(1);
+				if (spellOrb->timeToLive > 0.15f)
+					spellOrb->timeToLive = 0.15f;
+				spellOrb->spent = true;
+			}
 		if (   spellOrb->timeToLive <= 0.0f
-			|| spellOrb->spent
 			|| spellOrb->position.y > 600.0f) {
 			delete(spellOrbs.at(i));
 			spellOrbs.at(i) = NULL;

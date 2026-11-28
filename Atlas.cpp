@@ -34,6 +34,14 @@ void Atlas::load() {
 	buffer.loadFromFile("sounds/metalHit3.ogg");
 	localSounds.push_back(buffer);
 	bufferedSounds.insert({{SoundOrigin::Knight, SoundReason::Block		}, localSounds});
+	localSounds.clear();
+	buffer.loadFromFile("sounds/heal1.ogg");
+	localSounds.push_back(buffer);
+	buffer.loadFromFile("sounds/heal2.ogg");
+	localSounds.push_back(buffer);
+	buffer.loadFromFile("sounds/heal3.ogg");
+	localSounds.push_back(buffer);
+	bufferedSounds.insert({{SoundOrigin::SpellOrb, SoundReason::Heal	}, localSounds});
 };
 
 bool Atlas::rollChanceToSucceed(const int& _chanceToSucceed) {

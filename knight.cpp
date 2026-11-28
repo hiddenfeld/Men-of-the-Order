@@ -158,15 +158,19 @@ void Knight::getHurt(const int& _amount) {
 		}
 		if (!attackBlocked) {
 			hp -= _amount;
+			if (hp < 0)
+				hp = 0;
 			SoundManager::playSound({SoundOrigin::Knight, SoundReason::Hurt}, 50.0f);
 		}
 	}
 };
 
 void Knight::getHealed(const int& _amount) {
-	if (hp < maxHp) {
+	if (   hp > 0
+		&& hp < maxHp) {
 		hp += _amount;
 		if (hp > maxHp)
 			hp = maxHp;
+		SoundManager::playSound({SoundOrigin::SpellOrb, SoundReason::Heal}, 50.0f);
 	}
 };
