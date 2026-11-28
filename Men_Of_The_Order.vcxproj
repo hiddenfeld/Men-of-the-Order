@@ -153,6 +153,7 @@
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SpellOrb.cpp" />
     <ClCompile Include="update.cpp" />
+    <ClCompile Include="VectorMathUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Atlas.hpp" />

@@ -26,6 +26,7 @@ SpellOrb::SpellOrb(
 };
 	
 void SpellOrb::update(const float& _seconds) {
+	timeAlive  += _seconds;
 	timeToLive -= _seconds;
 	moveAlongMovementVector(_seconds);
 	if (target != NULL)

@@ -55,6 +55,9 @@
     <Filter Include="Header Files\Doodads">
       <UniqueIdentifier>{d5328263-cc57-4226-a657-62c05f470cca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{3c47b708-d80f-4a5e-85ab-f243b493ae9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -73,9 +76,6 @@
       <Filter>Source Files\Pathing &amp; Geometry</Filter>
     </ClCompile>
     <ClCompile Include="C_Engine.cpp">
-      <Filter>Source Files\C_Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomIntFromZeroTo.cpp">
       <Filter>Source Files\C_Engine</Filter>
     </ClCompile>
     <ClCompile Include="save.cpp">
@@ -105,17 +105,23 @@
     <ClCompile Include="I_Unit.cpp">
       <Filter>Source Files\Units</Filter>
     </ClCompile>
-    <ClCompile Include="EnumsToStringUtility.cpp">
-      <Filter>Source Files\C_Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="CountDownByUtility.cpp">
-      <Filter>Source Files\C_Engine</Filter>
-    </ClCompile>
     <ClCompile Include="SpellOrb.cpp">
       <Filter>Source Files\Projectiles</Filter>
     </ClCompile>
     <ClCompile Include="InteractibleDoodad.cpp">
       <Filter>Source Files\Doodads</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomIntFromZeroTo.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumsToStringUtility.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="CountDownByUtility.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorMathUtility.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

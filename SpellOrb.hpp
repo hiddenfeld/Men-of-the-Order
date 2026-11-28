@@ -9,6 +9,7 @@ struct SpellOrb {
 	sf::Vector2f movement;
 	I_Unit* target;
 	bool spent{false};
+	float timeAlive{0.0f};
 	float timeToLive;
 
 	SpellOrb(const sf::Vector2f&, const sf::Vector2f&, const float&);

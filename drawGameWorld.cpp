@@ -137,7 +137,8 @@ void C_Engine::drawSquire() {
 
 void C_Engine::drawSpellOrbs() {
     for (unsigned int i{0}; i < spellOrbs.size(); i++)
-        drawSpellOrb(spellOrbs.at(i));
+        if (spellOrbs.at(i)->timeAlive > 0.1f)
+            drawSpellOrb(spellOrbs.at(i));
 };
 
 void C_Engine::drawSpellOrb(SpellOrb* _orb) {

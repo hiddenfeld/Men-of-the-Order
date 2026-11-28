@@ -77,10 +77,11 @@ void C_Engine::resetViewsAndRenderBounds() {
 
 void C_Engine::inputTriggersSpellOrbShot() {
     if (playerSpellOrbLaunchCooldown <= 0.0f) {
-        if (playerFacingRight)
-            spellOrbs.push_back(new SpellOrb({(float)playerPosition + 90.0f, 400.0f}, {500.0f, 0.0f}, 4.0f));
-        else
-            spellOrbs.push_back(new SpellOrb({(float)playerPosition - 90.0f, 400.0f}, {-500.0f, 0.0f}, 4.0f));
+        sf::Vector2f spellOrbMovement{(float)(relativeMousePosition.x) - (float)playerPosition,
+                                      (float)(relativeMousePosition.y) - 400.0f};
+        spellOrbs.push_back(new SpellOrb({(float)playerPosition, gameWorldView.getCenter().y},
+                                         lengthenVector(normalizeVector(spellOrbMovement), 600.0f),
+                                         5.0f));
         playerSpellOrbLaunchCooldown = playerSpellOrbLaunchSpeed;
     }
 };

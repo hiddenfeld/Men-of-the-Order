@@ -56,6 +56,12 @@ void C_Engine::drawGUI() {
         debugText.setPosition(0.0f, 20.0f);
         debugText.setString("relativeMousePosition: (" + std::to_string(relativeMousePosition.x) + " | " + std::to_string(relativeMousePosition.y) + ")");
         window.draw(debugText);
+        debugText.setPosition(0.0f, 50.0f);
+        debugText.setString("gameWorldView.size: (" + std::to_string((int)gameWorldView.getSize().x) + " | " + std::to_string((int)gameWorldView.getSize().y) + ")");
+        window.draw(debugText);
+        debugText.setPosition(0.0f, 80.0f);
+        debugText.setString("gameWorldView.center: (" + std::to_string((int)gameWorldView.getCenter().x) + " | " + std::to_string((int)gameWorldView.getCenter().y) + ")");
+        window.draw(debugText);
     }
 };
 

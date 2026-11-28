@@ -3,11 +3,10 @@
 /*
 
 	IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------------
-	User can hold down both left click and right click to launch a spell orb in the direction the player is facing.
-	The spell orb originally flies out from the squire and towards the edge of the screen.
-	It has a limited time to live, which is counted down as the game proceeds.
-	It is drawn as a green circle with pulsating white outline.
-	Acceleration towards a target was added for future use in boomerang-kind-of-backstabbing-magic-attacks.
+	The player can shoot spellOrbs in any direction.
+	The spellOrb is shot towards the mouse.
+	The speed of the orb is constant.
+	It is only rendered if it's been around for 0.1 seconds already, so it's not visible when it's "inside" the squire so to speak.
 
 	TO BE IMPLEMENTED: -----------------------------------------------------------------------------------------------------------------------
 	The player can heal the knight by some means
