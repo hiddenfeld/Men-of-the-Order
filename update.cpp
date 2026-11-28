@@ -27,6 +27,8 @@ void C_Engine::updateSpellOrbs(const float& _elapsedSeconds) {
 			}
 		if (   spellOrb->timeToLive <= 0.0f
 			|| spellOrb->position.y > 600.0f) {
+			if (spellOrb->position.y > 600.0f)
+				SoundManager::playSound({SoundOrigin::SpellOrb, SoundReason::Hurt}, 5000.0f);
 			delete(spellOrbs.at(i));
 			spellOrbs.at(i) = NULL;
 		}

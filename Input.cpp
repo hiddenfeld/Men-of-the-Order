@@ -83,5 +83,6 @@ void C_Engine::inputTriggersSpellOrbShot() {
                                          lengthenVector(normalizeVector(spellOrbMovement), 600.0f),
                                          5.0f));
         playerSpellOrbLaunchCooldown = playerSpellOrbLaunchSpeed;
+        SoundManager::playSound({SoundOrigin::SpellOrb, SoundReason::Spawn}, 3000.0f);
     }
 };
