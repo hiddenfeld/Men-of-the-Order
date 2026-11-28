@@ -3,8 +3,9 @@
 enum class SoundReason {
 	Aggro,
 	Attack,
-	Hurt,
 	Block,
 	Grunt,
-	Heal
+	Heal,
+	Hurt,
+	Spawn
 };
